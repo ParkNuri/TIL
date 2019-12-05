@@ -185,7 +185,9 @@ To https://github.com/ParkNuri/TIL.git
 
 ```
 
-`origin` 원격 저장소에 `push`하게 되며 이후 작업 과정에서는 `add`->
+`origin` 원격 저장소에 `push`하게 되며, `github` 에서 확인할 수 있다.
+
+이후 작업 과정에서는 `add`-> `commit`으로 이력을 남기고 `push`로 업로드하면 된다.
 
 
 
