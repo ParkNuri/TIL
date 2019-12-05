@@ -186,3 +186,46 @@ To https://github.com/ParkNuri/TIL.git
 ```
 
 `origin` 원격 저장소에 `push`하게 되며 이후 작업 과정에서는 `add`->
+
+
+
+
+
+## Error case
+
+---
+
+```bash
+$ git push -u origin master
+ssh: connect to host github.com port 22: Connection timed out
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+```
+
+방화벽 문제로,  git code에서 push 코드를 ssh가 아닌 https로 바꾼 후 다시 copy
+
+
+
+## ETC
+
+* 강사님 Git
+
+  edutak
+
+
+
+* ML/DL 강의
+  * 영문
+
+    coursero - ML/DL (Andrew Ng - 대학수업 느낌)
+
+  * 국문
+
+    모두를 위한 딥러닝/머신러닝
+
+  +) kaggle.com
+
+  주어진 데이터 분석하는 문제 사이트
