@@ -1,0 +1,15 @@
+package Exercise3;
+
+public class test {
+
+	public int value;
+	private int v;
+	
+	public test() {
+		
+	}
+	public test(int data) {
+		this.v = data;
+	}
+
+}

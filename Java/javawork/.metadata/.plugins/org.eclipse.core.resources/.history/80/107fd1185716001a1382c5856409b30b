@@ -1,0 +1,14 @@
+package chap03;
+
+import java.util.Random;
+
+public class APIExam {
+
+	public static void main(String[] args) {
+			Random r = new Random();
+			int i = r.nextInt();
+			
+			System.out.println("·£´ý °ª=>"+i);
+	}
+
+}

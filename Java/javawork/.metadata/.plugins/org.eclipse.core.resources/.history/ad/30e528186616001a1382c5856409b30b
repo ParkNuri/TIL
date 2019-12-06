@@ -1,0 +1,8 @@
+package api.util;
+//Scanner 클래스 사용법
+public class ScannerTest {
+	public static void main(String[] args) {
+		String str = String("");
+		
+	}
+}

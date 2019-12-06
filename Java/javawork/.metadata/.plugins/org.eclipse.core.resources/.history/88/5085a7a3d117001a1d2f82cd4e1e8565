@@ -1,0 +1,20 @@
+package chap04;
+
+import java.util.Scanner;
+
+public class ScoreMultiIfExam {
+
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		int score = s.nextInt();
+		if(score>100|score<0) {
+			System.out.println("잘못 입력");
+		}
+		else {
+			if() {}
+		}
+		
+		
+	}
+
+}

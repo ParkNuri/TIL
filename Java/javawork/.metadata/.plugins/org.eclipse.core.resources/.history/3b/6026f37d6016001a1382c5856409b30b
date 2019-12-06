@@ -1,0 +1,14 @@
+package chap03;
+
+public class IfTest01 {
+
+	public static void main(String[] args) {
+		int num = 90;
+		if(num>=90)
+			System.out.println("만족");
+		System.out.println("종료");
+		
+
+	}
+
+}

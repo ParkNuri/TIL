@@ -1,0 +1,10 @@
+package chap04;
+
+public class DoWhileTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

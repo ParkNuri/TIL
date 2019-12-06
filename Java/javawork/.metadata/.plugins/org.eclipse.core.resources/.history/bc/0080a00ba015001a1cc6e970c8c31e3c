@@ -1,0 +1,8 @@
+package chap03;
+
+public class OprTest05 {
+	public static void main(String[]args) {
+		int num1 =80;
+		System.out.println(num1>=90?"합격":"불합격");
+	}
+}

@@ -1,0 +1,8 @@
+package chap03;
+
+public class OprTest04 {
+	public static void main(String[]args) {
+		int num = 100;
+		String str = null;
+	}
+}
