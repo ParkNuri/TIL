@@ -6,9 +6,10 @@
 >
 > 소스코드 형상 관리 도구로써, 작성되는 코드의 이력을 관리한다.
 
-### 0. 기본 설정
 
----
+
+## 0. 기본 설정
+
 
 아래의 설정은 이력 작성자(author)를 설정하는 것으로, 컴퓨터에서 최초에 한번만 설정하면 된다.
 
@@ -27,11 +28,16 @@ github 가입 이메일로 변경
   
   ```
 
-  
 
-## 로컬 저장소(repository) 활용
 
-### 1. 저장소 초기화
+
+
+
+
+
+## 1. 로컬 저장소(repository) 활용
+
+### 1) 저장소 초기화
 
 ```bash
 $ git init
@@ -44,7 +50,7 @@ Initialized empty Git repository in C:/Users/student/Desktop/TIL/.git/
 
 
 
-### 2. add
+### 2) add
 
 history를 확정하기 위해서는 `add` 명령어를 통하여 `staging area` 에 `stage` 시킨다.
 
@@ -95,9 +101,7 @@ Changes to be committed:
 
 
 
-## 3. Commit
-
----
+### 3) Commit
 
 `git`은 `commit`을 통해 이력을 남긴다.
 
@@ -145,13 +149,19 @@ repository 생성 후 <>code 의 코드 복사 붙여넣기
 
 
 
+
+
+
+
 ## 2. 원격 저장소(remote repository) 활용
 
 > 원격 저장소는 다양한 서비스를 통해 제공 받을 수 잇다.
 >
 > github, gitlab, bitbucket
 
-### 1. 원격 저장소 등록
+
+
+### 1) 원격 저장소 등록
 
 ```bash
 $ git remote add origin https~ << url
@@ -170,7 +180,9 @@ origin  git@github.com:ParkNuri/TIL.git (push)
 
 ```
 
-### 2. 원격 저장소 push
+
+
+### 2) 원격 저장소 push
 
 ```bash
 $ git push origin master
@@ -193,9 +205,92 @@ To https://github.com/ParkNuri/TIL.git
 
 
 
+
+
+## 3. 로컬 저장소 이동
+
+> git에 commit한 repository를 새로운 저장소에  download 하여 여러 대의 컴퓨터에서 프로젝트를 관리할 수 있다.
+
+
+
+### 1) 로컬 저장소로 clone
+
+```bash
+git clone <repository 주소>
+
+ex)
+git clone https://github.com/ParkNuri/TIL.git
+```
+
+![git clone](C:\Users\nuri\Desktop\git clone.PNG)
+
+
+
+
+
+
+
+## +) 추가 Tip
+
+
+
+### 1) repository 주 사용 언어 변경
+
+github가 제공하는 서비스 중 `repository language` 서비스는 repository가 담고있는 언어를 자동으로 분석하여 보여주는 기능을 제공한다. 
+
+`linguist`라는 라이브러리가 이러한 기능을 수행하는데  repository 내의 모든 파일을 분석하기 때문에 때로는 실제로 프로젝트에 사용되는 언어가 아닌 언어가 대표 언어로 보여지기도 한다.
+
+나같은 경우는 java 프로젝트를 관리하는 repository인데 javascript가 대표 언어로 분석되었다.
+
+###  ![before](images/before.PNG)
+
+
+
+이런 경우, 설정 파일 중 하나인 `.gitattributes`을 추가하여 프로젝트와 무관한 파일들을 분석 대상에서 제외할 수 있다.
+
+`.gitattributes`는 git repository의 다양한 속성 및 설정을 정의할 수 있는 설정 파일이다.
+
+
+
+* 분석 예외 추가
+
+  `.gitattributes` 파일을 추가하여 `linguist` 라이브러리가 분석하지 않았으면 하는 파일이나 경로를 지정할 수 있다. 
+
+  
+
+  먼저  repository 에 `.gitattributes`라는 파일을 생성하고 분석에서 제외하고싶은 파일이나 경로 뒤에 `linguist-vendored` 라고  작성한다.
+
+  ```bash
+  <제외하고싶은 경로> linguist-vendored
+  <제외하고싶은 파일 명> linguist-vendored
+  *.<제외하고싶은 파일 형식> linguist-vendored
+  
+  ex) 
+  *.md linguist-vendored
+  java/.metadate/* linguist-vendored
+  ```
+
+  
+
+  repository 내의 상태바 아래의 색 막대를 클릭하고 제외하고 싶은 언어를 클릭하면 해당 언어가 포함된 파일과 경로를 볼 수 있다.
+
+  
+
+  ![statusBar](images/statusBar-1575702273565.PNG)
+
+  
+
+  ![lang](images/lang-1575702930149.PNG)
+
+  
+
+
+
 ## Error case
 
 ---
+
+>방화벽 문제로,  git code에서 push 코드를 ssh가 아닌 https로 바꾼 후 주소를 copy하여 push
 
 ```bash
 $ git push -u origin master
@@ -207,7 +302,9 @@ and the repository exists.
 
 ```
 
-방화벽 문제로,  git code에서 push 코드를 ssh가 아닌 https로 바꾼 후 다시 copy
+
+
+
 
 
 
