@@ -1,4 +1,4 @@
-# 마크다운 기초
+# markdown 기초 (Feat. Typora)
 
 ## 1. 제목(Heading)
 
@@ -92,8 +92,6 @@ SELECT * FROM table;
 
 
 # 8. 기타
-
----
 
 1. 수평선 (---)
 2. *이텔릭체(기울임체)*(**)
