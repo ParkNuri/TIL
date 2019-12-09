@@ -2,12 +2,13 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="class String" key="selection"/>
+		<item value="//전체 배열의 요소를 엑세스하기" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="//전체 배열의 요소를 엑세스하기"/>
 			<item value="class String"/>
 			<item value="class String("/>
 		</list>
