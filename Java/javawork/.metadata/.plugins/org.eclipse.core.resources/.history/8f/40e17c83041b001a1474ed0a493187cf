@@ -1,0 +1,27 @@
+package chap06_oop;
+//메소드 정의하는 연습을 위한 클래스
+public class MyMethod {
+	//3. 리턴값이없고 매개변수가 두 개인 메소드
+	public void display(String str, int cnt) {
+		for(int i = 1; i<=cnt;i++) {
+			System.out.print(str);
+		}
+		System.out.println();
+		
+	}
+	//2. 리턴 값이 없고 매개변수가 한 개인 메소드
+	public void display(String str) {
+		for(int i=1;i<=10;i++) {
+			System.out.print(str);
+		}
+		System.out.println();
+	}
+	//1. 메개변수가 없고 return 값이 없는 메소드
+	public void display() {
+		for(int i = 1; i<=10;i++) {
+			System.out.print("*");
+		}
+		System.out.println();
+		
+	}
+}

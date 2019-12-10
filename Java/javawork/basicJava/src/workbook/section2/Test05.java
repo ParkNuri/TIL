@@ -10,5 +10,7 @@ public class Test05 {
 		
 		System.out.println(num);
 
+		
+		//Math m = new Math();
 	}
 }

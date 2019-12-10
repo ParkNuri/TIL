@@ -1,0 +1,21 @@
+package workbook.section3;
+
+public class Test5 {
+
+	public static void main(String[] args) {
+		Calc c = new Calc();
+		float avg = (float)c.calcSum(Integer.parseInt(args[0]), Integer.parseInt(args[2]), Integer.parseInt(args[2]), Integer.parseInt(args[3]))/4;
+		if(100>=avg && avg>=90) {
+			System.out.println("A");
+		}else if(avg>=80) {
+			System.out.println("B");
+		}else if(avg>=70) {
+			System.out.println("C");
+		}else if(avg>=60) {
+			System.out.println("D");
+		}else if(avg>0) {
+			System.out.println("F");
+		}
+	}
+
+}
