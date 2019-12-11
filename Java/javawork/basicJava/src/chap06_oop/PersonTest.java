@@ -42,6 +42,12 @@ public class PersonTest {
 		System.out.println("성명:"+p2.getName());
 		System.out.println("주소:"+p2.getAddr());
 		System.out.println("나이:"+p2.getAge());
+
+		
+		//생성자 사용
+		Person p3 = new Person("박누리", "서울시 광진구", 24);
+		
+		System.out.println("성명:"+p3.getName()+"주소:"+p3.getAddr()+"나이:"+p3.getAge());
 	}
 
 }

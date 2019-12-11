@@ -1,0 +1,14 @@
+package workbook.section5;
+
+public class Test2 {
+
+	public static void main(String[] args) {
+		Company com = new Company(100);
+		
+		System.out.println("연 기본급 합: "+com.getIncome()+"\t세후: "+com.getAfterTaxIncome());
+		System.out.println("연 보너스 합: "+com.getBonus()+"\t세후: "+com.getAfterTaxBonus());
+		System.out.println("연 지급액 합: "+com.getAfterTaxIncome()+com.getAfterTaxBonus());
+
+	}
+
+}

@@ -10,6 +10,10 @@ package chap06_oop;
 // 클래스를 정의할때 멤버변수는 private으로 선언해서 외부에서 접근할 수 없도록 정보를 은닉하고
 // public 메소드를 통해서 접근할 수 있도록 구현한다.
 public class Person {
+	@Override
+	public String toString() {
+		return "Person name=" + name + ", addr=" + addr + ", age=" + age ;
+	}
 	private String name;	//class의 특성을 나타내는 데이터
 	private String addr;	// : 멤버변수 or 필드
 	private int age;		// 고정값 정의하지 x

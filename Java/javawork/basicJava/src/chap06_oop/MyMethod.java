@@ -1,5 +1,8 @@
 package chap06_oop;
 //메소드 정의하는 연습을 위한 클래스
+//메소드 오버로딩
+//사용하는 이유? 유연성을 위해서
+//같은 기능을 수행하지만 매개변수 타입이 다른 메소드
 public class MyMethod {
 	//4. 매개변수, 리턴값이 모두 있는 메소드
 	// ->숫자 2개를 매개변수로 전달받아 더해서 결과를 리턴하는 메소드
@@ -46,4 +49,14 @@ public class MyMethod {
 		System.out.println();
 		
 	}
+
+	public void display(int count, String str) {
+		for(int i = 1; i<=10;i++) {
+			System.out.print("*");
+		}
+		System.out.println();
+		
+	}
+
+
 }

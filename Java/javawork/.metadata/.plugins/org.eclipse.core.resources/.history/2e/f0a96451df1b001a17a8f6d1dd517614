@@ -1,0 +1,20 @@
+package chap07_oop;
+
+public class StaticDemoTest {
+
+	public static void main(String[] args) {
+		StaticDemo obj1 = new StaticDemo("obj1");
+		obj1.display();	//沥惑利牢 规过
+		System.out.println(obj1.num+", "+obj1.staticNum);	//碍力 立辟
+		
+		StaticDemo obj2 = new StaticDemo("obj1");
+		obj2.display();	//沥惑利牢 规过
+		System.out.println(obj2.num+", "+obj2.staticNum);	//碍力 立辟
+
+		StaticDemo obj3 = new StaticDemo("obj1");
+		obj3.display();	//沥惑利牢 规过
+		System.out.println(obj3.num+", "+obj3.staticNum);	//碍力 立辟
+		
+	}
+
+}
