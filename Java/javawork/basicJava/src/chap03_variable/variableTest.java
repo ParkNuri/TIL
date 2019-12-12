@@ -27,7 +27,10 @@ public class variableTest {
 		else {
 			System.out.println("참조형 다르다.");
 		}
+		
 		//문자열 비교 - String클래스 메소드로 처리
+		//문자열 비교는 무조건 equals 이용해서 비교한다.
+		//==안돼!!
 		if(str1.equals(str2)) {	// equals-> String 클래스 내의 value 비교
 			System.out.println("문자열 같다.");
 		}else {
