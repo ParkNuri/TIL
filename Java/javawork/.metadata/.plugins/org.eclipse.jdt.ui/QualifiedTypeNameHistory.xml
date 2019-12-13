@@ -30,7 +30,6 @@
 <fullyQualifiedTypeName name="chap07_oop.Super"/>
 <fullyQualifiedTypeName name="chap07_oop.Sub"/>
 <fullyQualifiedTypeName name="java.lang.Object"/>
-<fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="chap07_oop.Account"/>
 <fullyQualifiedTypeName name="chap07_oop.Child"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
@@ -40,4 +39,13 @@
 <fullyQualifiedTypeName name="workbook.section5.Mobile"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="workbook.section5.MobileTest"/>
+<fullyQualifiedTypeName name="java.lang.Deprecated"/>
+<fullyQualifiedTypeName name="chap07_oop.Dessert"/>
+<fullyQualifiedTypeName name="chap07_oop.FinalSuper"/>
+<fullyQualifiedTypeName name="chap07_oop.FinalSub"/>
+<fullyQualifiedTypeName name="chap07_oop.poly.AbstractSuper"/>
+<fullyQualifiedTypeName name="java.lang.Package"/>
+<fullyQualifiedTypeName name="chap07_oop.poly.Parent"/>
+<fullyQualifiedTypeName name="chap07_oop.poly.EmailSender"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
 </qualifiedTypeNameHistroy>
