@@ -1,0 +1,39 @@
+package chap07_oop;
+
+public class Person {
+	private String name;
+	private int age;
+	
+	//Constructor ------------------------------------------------
+	public Person() {	}
+	
+	public Person(String name, int age) {
+		super();
+		this.name = name;
+		this.age = age;
+	}
+
+
+	//Method -----------------------------------------------------
+	public void print() {
+		System.out.print("성명: "+getName()+" 나이: "+getAge());
+		
+	}
+	
+	//Getter & Setter --------------------------------------------
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+}

@@ -6,3 +6,23 @@
 1575855301828	Copy package
 1575855320995	Copy package
 1575876150766	Rename compilation unit 'Test4Deduplicate.java'
+1575938602202	Rename package 'chap06'
+1575938617036	Rename package 'chap05'
+1575938726960	Rename package 'chap03'
+1575938745795	Rename package 'chap04'
+1575956154138	Rename type 'Test5Class'
+1575956193770	Rename type 'Calculator'
+1576029860886	Delete element
+1576040006311	Copy compilation units
+1576040761652	Rename type 'Test6'
+1576040778428	Rename type 'Student06'
+1576040788064	Rename type 'Student'
+1576045063945	Move compilation unit
+1576113941172	Rename type '동물after'
+1576114628933	Copy compilation units
+1576114718615	Delete elements
+1576128611165	Copy compilation unit
+1576136293117	Rename type 'Otap'
+1576201473075	Rename field 'num'
+1576213937044	Delete element
+1576215953815	Delete element

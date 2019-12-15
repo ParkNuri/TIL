@@ -1,0 +1,17 @@
+package chap06_oop;
+//Person 클래스를 사용하는 클래스
+public class PersonTest {
+
+	public static void main(String[] args) {
+		Person p = new Person();
+		
+		p.name= "박보검";
+		p.addr= "서울시 광진구";
+		p.age= 28;
+		
+		System.out.println("성명:"+p.name);
+		System.out.println("주소:"+p.addr);
+		System.out.println("나이:"+p.age);
+	}
+
+}

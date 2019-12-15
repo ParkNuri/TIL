@@ -3,8 +3,10 @@ package workbook.section4;
 public class Test2 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		Calc c = new Calc();
+		int result =c.calculate(Integer.parseInt(args[0]));
+		
+		System.out.println("°á°ú: "+result);
 	}
 
 }

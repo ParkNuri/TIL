@@ -1,0 +1,17 @@
+package chap07_oop;
+
+public class CheckingAccount extends Account {
+	private String cardNo;
+	public CheckingAccount() {	}
+	public CheckingAccount(String account, String ownerName, int balance, String cardNo) {
+		super(account, balance, ownerName);
+		this.cardNo = cardNo;
+	}
+	public void pay(int amount, String cardNo) {
+		if(this.cardNo==cardNo) {
+			if(amount<super.balance)
+		}else {
+			System.out.println("지불이 불가능합니다.");
+		}
+	}
+}

@@ -1,0 +1,12 @@
+package chap06_oop.constructor;
+
+public class MyConstructorTest {
+
+	public static void main(String[] args) {
+		MyConstructor obj1 = new MyConstructor();
+		MyConstructor obj = new MyConstructor("¹Ú´©¸®", "qkrsnrl", "a123456789");
+		System.out.println(obj.getName()+", "+obj.getId()+", "+obj.getPass());
+		
+	}
+
+}

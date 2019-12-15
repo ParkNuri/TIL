@@ -1,0 +1,8 @@
+package workbook.section5;
+
+public class Otab extends Mobile{
+	public Otab(){}
+	public Otab(String mobileName, int batterySize, String osType){
+		
+	}
+}
