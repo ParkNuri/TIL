@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.lang.StringBuffer"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="api.util.ScannerTest"/>
-<fullyQualifiedTypeName name="javax.xml.soap.SAAJResult"/>
-<fullyQualifiedTypeName name="chap04.ScoreMultiIfExam"/>
-<fullyQualifiedTypeName name="chap06_oop.MyMethod"/>
-<fullyQualifiedTypeName name="java.math.MathContext"/>
-<fullyQualifiedTypeName name="workbook.section3.Calc"/>
-<fullyQualifiedTypeName name="java.awt.Window"/>
-<fullyQualifiedTypeName name="workbook.section4.Account"/>
-<fullyQualifiedTypeName name="javax.xml.parsers.FactoryConfigurationError"/>
-<fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="java.io.FileInputStream"/>
 <fullyQualifiedTypeName name="chap06_oop.constructor.MyConstructor"/>
 <fullyQualifiedTypeName name="chap06_oop.Person"/>
@@ -33,11 +21,9 @@
 <fullyQualifiedTypeName name="chap07_oop.Account"/>
 <fullyQualifiedTypeName name="chap07_oop.Child"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
-<fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="chap07_oop.CheckingAccount"/>
 <fullyQualifiedTypeName name="workbook.section5.Ltab"/>
 <fullyQualifiedTypeName name="workbook.section5.Mobile"/>
-<fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="workbook.section5.MobileTest"/>
 <fullyQualifiedTypeName name="java.lang.Deprecated"/>
 <fullyQualifiedTypeName name="chap07_oop.Dessert"/>
@@ -47,5 +33,31 @@
 <fullyQualifiedTypeName name="java.lang.Package"/>
 <fullyQualifiedTypeName name="chap07_oop.poly.Parent"/>
 <fullyQualifiedTypeName name="chap07_oop.poly.EmailSender"/>
+<fullyQualifiedTypeName name="chap07_oop.poly.InterA"/>
+<fullyQualifiedTypeName name="chap07_oop.poly.InterC"/>
+<fullyQualifiedTypeName name="chap07_oop.poly.SubA"/>
+<fullyQualifiedTypeName name="chap07_oop.poly.SuperA"/>
+<fullyQualifiedTypeName name="javax.swing.JFrame"/>
+<fullyQualifiedTypeName name="java.lang.Runnable"/>
+<fullyQualifiedTypeName name="workbook.section6.Shape"/>
+<fullyQualifiedTypeName name="workbook.section6.Resize"/>
+<fullyQualifiedTypeName name="workbook.section6.Triangle"/>
+<fullyQualifiedTypeName name="java.lang.Character"/>
+<fullyQualifiedTypeName name="workbook.section6_82p.Rectangle"/>
+<fullyQualifiedTypeName name="workbook.section6_82p.Circle"/>
+<fullyQualifiedTypeName name="java.security.GeneralSecurityException"/>
+<fullyQualifiedTypeName name="workbook.section6_82p.Car"/>
+<fullyQualifiedTypeName name="workbook.section6_82p.L3"/>
+<fullyQualifiedTypeName name="java.lang.SecurityException"/>
+<fullyQualifiedTypeName name="workbook.section7_100p.Movable"/>
+<fullyQualifiedTypeName name="workbook.section7_100p.Shape"/>
+<fullyQualifiedTypeName name="workbook.section7_100p.Rectangle"/>
+<fullyQualifiedTypeName name="java.util.InputMismatchException"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="java.util.Stack"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="java.lang.ArrayIndexOutOfBoundsException"/>
+<fullyQualifiedTypeName name="java.lang.NullPointerException"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
 </qualifiedTypeNameHistroy>
