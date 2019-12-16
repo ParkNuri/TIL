@@ -2,7 +2,7 @@ package chap06_oop;
 
 import java.awt.DisplayMode;
 
-import workbook.section3.Student;
+import workbook.section3_41p.Student;
 
 //메소드의 매개변수와 리턴타입으로 참조형, 배열 , 기본형 모두 사용할 수 있다.
 public class MethodTest {

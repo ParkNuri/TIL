@@ -2,12 +2,13 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="prin" key="selection"/>
+		<item value="package chap08_exception;" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="package chap08_exception;"/>
 			<item value="account"/>
 			<item value="prin"/>
 			<item value="상속테스트"/>
@@ -15,12 +16,6 @@
 			<item value="String(String"/>
 			<item value="String(String&apos;"/>
 			<item value="3"/>
-			<item value="2"/>
-			<item value="1"/>
-			<item value="score"/>
-			<item value="//전체 배열의 요소를 엑세스하기"/>
-			<item value="class String"/>
-			<item value="class String("/>
 		</list>
 		<list key="replacehistory">
 			<item value="accid"/>
