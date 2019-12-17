@@ -1,5 +1,0 @@
-package workbook.section3;
-
-public class Calculator {
-	public Calculator() {}
-}
