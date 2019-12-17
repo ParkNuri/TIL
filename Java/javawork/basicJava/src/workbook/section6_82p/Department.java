@@ -14,11 +14,14 @@ public class Department {
 		this.name = name;
 	}
 	
+	
 	//Method---------------------------------------------------------
 	public double evaluationNumber() {
 		
 		return this.evaluation.evaluationNumber();
 	}
+	
+	
 	//Getter&Setter--------------------------------------------------
 
 	public String getName() {
