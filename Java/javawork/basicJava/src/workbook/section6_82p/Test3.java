@@ -1,11 +1,9 @@
 package workbook.section6_82p;
 
-import java.util.Scanner;
 
 public class Test3 {
 
 	public static void main(String[] args) {
-		Scanner key = new Scanner(System.in);
 		System.out.print("부서 이름과 5개의 점수를 입력하세요. : ");
 		if(args.length==6) {
 			
@@ -26,11 +24,11 @@ public class Test3 {
 			System.out.println(name+" "+e1+" "+e2+" "+e3+" "+e4+" "+e5);
 			
 			Department dep = new Department(name, e1, e2, e3, e4, e5);
-//			dep.getEvaluation().evaluationNumber();
+			System.out.println(dep.evaluationNumber());
 		}
 		else {
 			System.out.println("다시 입력하세요");
-			return ;
+			//return ;
 		}
 //		
 	}

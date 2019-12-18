@@ -1,0 +1,31 @@
+INSERT INTO CUSTOMER VALUES('PARK', '1234', '박누리', 1000, SYSDATE);
+
+
+create table product(
+   pdno number,
+   pdname varchar2(10),
+   pdsubname varchar2(10) not null,
+   factno varchar2(5),
+   pddate date,
+   pdcost number,
+   pdprice number,
+   pdamount nember);
+
+
+
+create table factory(
+   factno varchar2(5),
+   facname varchar2(14) not null,
+   facloc varchar2(13),
+   primary key(factno));
+
+
+
+create table store(
+   stono varchar2(5),
+   stoname varchar2(14) not null,
+   pdno number,
+   stamount number,
+   stsales number,
+   stprice number,
+   primary key(stono));

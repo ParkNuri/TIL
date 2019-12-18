@@ -225,3 +225,12 @@ System.out.println(str);
   
   
   
+  
+  
+  
+  
+### 3) System 클래스
+
+* arraycopy() : 배열 복사
+* currentTimeMilis() : 초단위 시간. 정밀하지는 않음
+* nanoTime() : currneTimeMilis보다 정밀한 시간.

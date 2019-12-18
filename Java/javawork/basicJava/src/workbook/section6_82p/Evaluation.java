@@ -23,8 +23,8 @@ public class Evaluation {
 	//Method---------------------------------------------------------
 	public double evaluationNumber() {
 		double result = 0.0;
-		result = (double)(evaluationA+evaluationB)/2*55+(double)(evaluationA+evaluationB)/2*25+evaluationE*20;
-		return (double)result/100;
+		result = ((double)evaluationA+evaluationB)/2*55+((double)evaluationC+evaluationD)/2*25+evaluationE*20;
+		return result/100;
 	}
 	
 	//Getter&Setter--------------------------------------------------
