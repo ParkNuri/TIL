@@ -1,0 +1,301 @@
+1. "SMITH의 급여 800만원"의 유형으로 출력할 수 있도록 concat함수를 써서 작업하세요.   단, 급여가 1000만원 미만인 직원에 대해서 작업
+
+case 1)
+​SQL> select concat(ename||'의 급여', sal||'만원') from emp where sal<1000;
+
+CONCAT(ENAME||'의급여',SAL||'만원')
+---------------------------------------------------------------------------
+SMITH의 급여800만원
+JAMES의 급여950만원
+
+case 2)
+SQL> select concat(concat(ename,'의 급여'), concat(sal,'만원')) from emp where sal<1000;
+
+CONCAT(CONCAT(ENAME,'의급여'),CONCAT(SAL,'만원'))
+-----------------------------------------------------------------------------------------
+SMITH의 급여800만원
+JAMES의 급여950만원
+
+2. 입사일이 81년인 직원에 대해서 각 직원의 이름과 입사일을 나타내시오. (substr이용)
+
+​SQL> select ename, hiredate from emp where substr(hiredate, 1,2)='81' ;
+
+ENAME                HIREDATE
+-------------------- --------
+ALLEN                81/02/20
+WARD                 81/02/22
+JONES                81/04/02
+MARTIN               81/09/28
+BLAKE                81/05/01
+CLARK                81/06/09
+KING                 81/11/17
+TURNER               81/09/08
+JAMES                81/12/03
+FORD                 81/12/03
+
+10 rows selected.
+
+3. 각 직원의 이름,job,급여를 나타내되 급여는 5자리로 나타내며 부족한 자릿수는 *로 표시한다.    급여가 2000만원 이하인 직원만 나타내기
+
+​SQL> select ename, job, rpad(sal,5,'*') from emp where sal<=2000;
+
+ENAME                JOB                RPAD(SAL,5,'*')
+-------------------- ------------------ -----------------------------
+SMITH                CLERK              800**
+ALLEN                SALESMAN           1600*
+WARD                 SALESMAN           1250*
+MARTIN               SALESMAN           1250*
+TURNER               SALESMAN           1500*
+ADAMS                CLERK              1100*
+JAMES                CLERK              950**
+MILLER               CLERK              1300*
+
+8 rows selected.
+
+
+4. 3번의 결과에서 *를 없애고 출력해보세요..단,함수를 이용하여 작업
+
+​SQL> select ename, job, rtrim(rpad(sal,5,'*'), '*') from emp where sal<=2000;
+
+ENAME                JOB                RTRIM(RPAD(SAL,5,'*'),'*')
+-------------------- ------------------ --------------------------------------
+SMITH                CLERK              800
+ALLEN                SALESMAN           1600
+WARD                 SALESMAN           1250
+MARTIN               SALESMAN           1250
+TURNER               SALESMAN           1500
+ADAMS                CLERK              1100
+JAMES                CLERK              950
+MILLER               CLERK              1300
+
+8 rows selected.
+
+5. emp 테이블에서 scott의 사원번호, 성명, 담당업무(소문자로), 부서번호를조회한다.
+
+​SQL> select empno, ename, lower(job), deptno
+  2  from emp
+  3  where ename = 'SCOTT';
+
+     EMPNO ENAME                LOWER(JOB)             DEPTNO
+---------- -------------------- ------------------ ----------
+      7788 SCOTT                analyst                    20
+
+
+6. emp 테이블에서 이름의 첫글자가 'K'보다크고 'Y'보다 작은 사원의 사원번호, 이름, 업무, 급여,   부서번호를 조회한다. 단, 이름순으로 정렬하여라.
+
+​SQL> select empno, ename, job, sal, deptno
+  2  from emp
+  3  where substr(ename,1)>'K' and substr(ename,1)<'Y'
+  4  order by ename;
+
+     EMPNO ENAME                JOB                       SAL     DEPTNO
+---------- -------------------- ------------------ ---------- ----------
+      7839 KING                 PRESIDENT                5000         10
+      7654 MARTIN               SALESMAN                 1250         30
+      7934 MILLER               CLERK                    1300         10
+      7788 SCOTT                ANALYST                  3000         20
+      7369 SMITH                CLERK                     800         20
+      7844 TURNER               SALESMAN                 1500         30
+      7521 WARD                 SALESMAN                 1250         30
+
+7 rows selected.
+
+7. emp 테이블에서 10번부서의 사원에 대하여 담당업무 중 좌측에 'A'를 삭제하고 급여 중   좌측의 1을 삭제하여 출력하여라.
+
+
+SQL> select ltrim(job,'A'), ltrim(sal, 1)
+  2  from emp
+  3  where deptno=10;
+
+LTRIM(JOB,'A')     LTRIM(SAL,1)
+------------------ -------------------------
+MANAGER          2450
+PRESIDENT          5000
+CLERK                300
+
+
+
+
+
+
+
+
+
+*********************group by TEST
+
+
+* group by 문제
+
+SQL> select to_char(hire_date,'MM') "월", count(employee_id) "입사자수"
+  2  from employees
+  3  group by to_char(hire_date,'MM')
+  4  order by to_char(hire_date,'MM')
+  5  ;
+
+월     입사자수
+---- ----------
+01           14
+02           13
+03           17
+04            7
+05            6
+06           11
+07            7
+08            9
+09            5
+10            6
+11            5
+
+월     입사자수
+---- ----------
+12            7
+
+12 rows selected.
+
+--------------------------------------------------
+
+groupby_01
+
+
+0.
+
+SQL> select ename, mgr, nvl2(mgr,'담당','상위자') 관리자
+  2  from emp
+  3  ;
+
+ENAME                       MGR 관리자
+-------------------- ---------- ------------------
+SMITH                      7902 담당
+ALLEN                      7698 담당
+WARD                       7698 담당
+JONES                      7839 담당
+MARTIN                     7698 담당
+BLAKE                      7839 담당
+CLARK                      7839 담당
+SCOTT                      7566 담당
+KING                            상위자
+TURNER                     7698 담당
+ADAMS                      7788 담당
+JAMES                      7698 담당
+FORD                       7566 담당
+MILLER                     7782 담당
+
+14 rows selected.
+
+
+
+1.
+
+SQL> select nvl(to_char(department_id),'No Department') 부서번호, round(avg(salary),0) 평균급여
+  2  from employees
+  3  group by department_id
+  4  having round(avg(salary))>6000;
+
+부서번호                                                                           평균급여
+-------------------------------------------------------------------------------- ----------
+100                                                                                    8601
+No Department                                                                          7000
+90                                                                                    19333
+20                                                                                     9500
+70                                                                                    10000
+110                                                                                   10154
+80                                                                                     8956
+40                                                                                     6500
+
+8 rows selected.
+
+
+
+2.
+
+SQL> select department_id, avg(salary)
+  2  from employees
+  3  group by department_id
+  4  having avg(salary)>=10000;
+
+DEPARTMENT_ID AVG(SALARY)
+------------- -----------
+           90  19333.3333
+           70       10000
+          110       10154
+
+
+3.
+
+SQL> select department_id, avg(salary)
+  2  from employees
+  3  where department_id not in (40,50)
+  4  group by department_id
+  5  order by avg(salary) desc;
+
+DEPARTMENT_ID AVG(SALARY)
+------------- -----------
+           90  19333.3333
+          110       10154
+           70       10000
+           20        9500
+           80  8955.88235
+          100  8601.33333
+           60        5760
+           10        4400
+           30        4150
+
+9 rows selected.
+
+
+4.
+
+SQL> select first_name, last_name, salary, commission_pct, salary+commission_pct total
+  2  from employees
+  3  where commission_pct is not null
+  4  order by salary+commission_pct desc;
+
+FIRST_NAME                               LAST_NAME                                              SALARY COMMISSION_PCT      TOTAL
+---------------------------------------- -------------------------------------------------- ---------- -------------- ----------
+John                                     Russell                                                 14000             .4    14000.4
+Karen                                    Partners                                                13500             .3    13500.3
+Alberto                                  Errazuriz                                               12000             .3    12000.3
+Lisa                                     Ozer                                                    11500            .25   11500.25
+Gerald                                   Cambrault                                               11000             .3    11000.3
+Ellen                                    Abel                                                    11000             .3    11000.3
+Clara                                    Vishney                                                 10500            .25   10500.25
+Eleni                                    Zlotkey                                                 10500             .2    10500.2
+Janette                                  King                                                    10000            .35   10000.35
+Peter                                    Tucker                                                  10000             .3    10000.3
+Harrison                                 Bloom                                                   10000             .2    10000.2
+Tayler                                   Fox                                                      9600             .2     9600.2
+Patrick                                  Sully                                                    9500            .35    9500.35
+David                                    Bernstein                                                9500            .25    9500.25
+Danielle                                 Greene                                                   9500            .15    9500.15
+Allan                                    McEwen                                                   9000            .35    9000.35
+Peter                                    Hall                                                     9000            .25    9000.25
+Alyssa                                   Hutton                                                   8800            .25    8800.25
+Jonathon                                 Taylor                                                   8600             .2     8600.2
+Jack                                     Livingston                                               8400             .2     8400.2
+Lindsey                                  Smith                                                    8000             .3     8000.3
+Christopher                              Olsen                                                    8000             .2     8000.2
+Louise                                   Doran                                                    7500             .3     7500.3
+Nanette                                  Cambrault                                                7500             .2     7500.2
+William                                  Smith                                                    7400            .15    7400.15
+Elizabeth                                Bates                                                    7300            .15    7300.15
+Mattea                                   Marvins                                                  7200             .1     7200.1
+Sarath                                   Sewall                                                   7000            .25    7000.25
+Oliver                                   Tuvault                                                  7000            .15    7000.15
+Kimberely                                Grant                                                    7000            .15    7000.15
+David                                    Lee                                                      6800             .1     6800.1
+Sundar                                   Ande                                                     6400             .1     6400.1
+Amit                                     Banda                                                    6200             .1     6200.1
+Charles                                  Johnson                                                  6200             .1     6200.1
+Sundita                                  Kumar                                                    6100             .1     6100.1
+
+35 rows selected.
+
+
+
+
+
+select nvl(to_char(department_id),'No Department') 부서번호, round(avg(salary),0) 평균급여
+from employees
+where nvl(to_char(department_id),'No Department')
+group by department_id
+having avg(salary)>6000;

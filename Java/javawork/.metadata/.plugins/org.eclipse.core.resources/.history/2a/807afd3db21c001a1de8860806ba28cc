@@ -1,6 +1,0 @@
-package workbook.section5;
-
-public class Otap {
-	public Otab(){}
-	public Otab(String mobileName, int batterySize, String osType){}
-}
