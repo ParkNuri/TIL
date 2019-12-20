@@ -812,7 +812,7 @@ MILLER               CLERK                      10       1300
 
       
 
-      * instr(문자열 or 컬럼명, 찾을 문자, 찾을 위치, n번째 문자) 
+      * ​	문자열 or 컬럼명, 찾을 문자, 찾을 위치, n번째 문자) 
 
         :  특정 칼럼이나 문자열에서 문자의 위치를 찾을 때 사용한 함수.
 
@@ -1549,6 +1549,672 @@ MILLER               CLERK                      10       1300
 
 
 
+
+## 6) Join
+
+* 내부조인
+
+  
+
+* 외부조인
+
+  
+
+* 크로스조인
+
+  
+
+
+
+## 8)View
+
+* 기본형태
+
+  ```mysql
+  create view [view_name] (col1, col2, ....)
+  as
+  select...
+  ```
+
+
+
+* 뷰 권한 주기
+
+```mysql
+SQL> conn system/manager
+Connected.
+SQL> grant create view to scott;
+
+Grant succeeded.
+
+SQL> conn scott/tiger
+Connected.
+SQL> create view countdata
+  2  as
+  3  select deptno, avg(sal) empcount
+  4  from emp
+  5  group by deptno;
+
+View created.
+
+SQL> select * from tab;
+
+TNAME                                                        TABTYPE         CLUSTERID
+------------------------------------------------------------ -------------- ----------
+COUNTDATA                                                    VIEW
+CUSTOMER                                                     TABLE
+DEPT                                                         TABLE
+EMP                                                          TABLE
+FACTORY                                                      TABLE
+LOCATIONS                                                    TABLE
+PRODUCT                                                      TABLE
+SALGRADE                                                     TABLE
+STORE                                                        TABLE
+TEST                                                         TABLE
+
+10 rows selected.
+```
+
+
+
+```mysql
+SQL> select deptno, avg(sal)
+  2  from emp
+  3  group by deptno;
+
+    DEPTNO   AVG(SAL)
+---------- ----------
+        30 1566.66667
+        20       2175
+        10 2916.66667
+```
+
+
+
+## 7) Sub Query
+
+> SQL문에 삽입된 query
+>
+> select문에서 주로 사용하고 select문에 삽입된 select문
+>
+> 바깥쪽의 query를 main query, 안쪽에 삽입된 query를 sub query라고 한다.
+>
+> * sub query 는 괄호로 묶어 주어야 한다.
+>
+> * sub query는 main query가 실행되기 전에 한번 실행되며 그 실행결과를 main query에서 사용한다.
+>
+> 그래서 sub query를 **일회용 뷰** 와 비슷하다고도 한다.
+
+
+
+#### [실습]
+
+> 10번 부서의 평균 급여보다 급여를 많이 받는 사원들을 조회
+
+```mysql
+select ename, sal
+from emp
+where sal > (select avg(sal) 
+           from emp
+           where deptno = 10); 
+```
+
+
+
+* 서브쿼리의 종류
+
+  * 단일행 서브쿼리
+
+    : 결과가 1행  1열인 서브쿼리
+
+    **[실습]**
+
+    * (Q1) 전체 평균보다 높은 급여를 받는 사원의 목록(ename, sal)
+    * (Q2) smith와 같은 job을 갖고 있는 사원의 목록(ename, job, hiredate)
+    * (Q3) 10번 부서에 근무하는 사원들의 job 과  같은 job을 가지고 있는 사원 목록
+
+    ```mysql
+    select *
+    from emp
+    where job in (select job
+                 from emp
+                 where deptno = 10);
+    
+    
+    -- (A1)
+    
+    
+    SQL> select ename, sal
+      2  from emp
+      3  where sal > (select avg(sal)
+      4              from emp);
+    
+    ENAME                       SAL
+    -------------------- ----------
+    JONES                      2975
+    BLAKE                      2850
+    CLARK                      2450
+    SCOTT                      3000
+    KING                       5000
+    FORD                       3000
+    
+    6 rows selected.
+          
+          
+    ------------------------------------------------------------------      
+                
+    -- (A2)            
+    SQL> select ename, job, hiredate
+      2  from emp
+      3  where job = (select job
+      4              from emp
+      5              where ename = 'SMITH');
+    
+    ENAME                JOB                HIREDATE
+    -------------------- ------------------ --------
+    SMITH                CLERK              80/12/17
+    ADAMS                CLERK              83/01/12
+    JAMES                CLERK              81/12/03
+    MILLER               CLERK              82/01/23
+    
+    
+    -- (Q3)
+    SQL> select *
+      2  from emp
+      3  where job in (select job
+      4               from emp
+      5               where deptno = 10);
+    
+         EMPNO ENAME                JOB                       MGR HIREDATE        SAL       COMM     DEPTNO
+    ---------- -------------------- ------------------ ---------- -------- ---------- ---------- ----------
+          7782 CLARK                MANAGER                  7839 81/06/09       2450                    10
+          7698 BLAKE                MANAGER                  7839 81/05/01       2850                    30
+          7566 JONES                MANAGER                  7839 81/04/02       2975                    20
+          7839 KING                 PRESIDENT                     81/11/17       5000                    10
+          7934 MILLER               CLERK                    7782 82/01/23       1300                    10
+          7900 JAMES                CLERK                    7698 81/12/03        950                    30
+          7876 ADAMS                CLERK                    7788 83/01/12       1100                    20
+          7369 SMITH                CLERK                    7902 80/12/17        800                    20
+    
+    8 rows selected.
+    
+    ```
+
+    
+
+    
+
+    
+
+  * 다중행서브쿼리
+
+    * 서브쿼리의 실행결과가 열 하나의 행이 여러 개인 경우
+
+    * =연산자와 같은 비교연산자를 사용할 수 없다.
+
+    * in : 컬럼의 값이 정확하게 일치하는 경우
+
+    * < any : 서브쿼리 결과의 최대값보다 작다.
+
+    * \> any : 서브쿼리 결과의 최소값보다 크다.  
+
+    * < all : 서브쿼리 결과의 최소값보다 작다.
+
+    * \> all : 서브쿼리 결과의 최대값보다 크다.
+
+      ```mysql
+      -- deptno=10 인 사람들 salary
+      
+      SQL> select sal from emp where deptno=10;
+      
+             SAL
+      ----------
+            2450
+            5000
+            1300
+         
+         
+      -- any   
+      SQL> select ename, sal
+        2  from emp
+        3  where sal < any(select sal
+        4  from emp
+        5  where deptno=10);
+      
+      ENAME                       SAL
+      -------------------- ----------
+      SMITH                       800
+      JAMES                       950
+      ADAMS                      1100
+      WARD                       1250
+      MARTIN                     1250
+      MILLER                     1300
+      TURNER                     1500
+      ALLEN                      1600
+      CLARK                      2450
+      BLAKE                      2850
+      JONES                      2975
+      
+      ENAME                       SAL
+      -------------------- ----------
+      SCOTT                      3000
+      FORD                       3000
+      
+      13 rows selected. 
+      
+      
+      -- all
+      SQL> select ename, sal
+        2  from emp
+        3  where sal < all(select sal
+        4  from emp
+        5  where deptno=10);
+      
+      ENAME                       SAL
+      -------------------- ----------
+      WARD                       1250
+      MARTIN                     1250
+      ADAMS                      1100
+      JAMES                       950
+      SMITH                       800
+      ```
+
+      
+
+      
+
+    **[실습]**
+
+    1.  이름에 'T'를 포함하고 있는 사원과 같은 부서에서 근무하는 사원의 이름과 사원번호 출력
+    2.  20번 부서의 최고 급여보다 급여가 많은 사원들의 사원명, 부서코드, 급여 목록 출력하기
+    3.  1982년에 입사한 직원의 평균 급여보다 급여가 높은 사원들의 사원명, 입사일, 급여의 목록을  출력하기
+
+  ```mysql
+  -- A1
+  
+  SQL> select ename, empno
+    2  from emp
+    3  where deptno in (select deptno
+    4  from emp
+    5  where instr(ename, 'T')!=0);
+  
+  ENAME                     EMPNO
+  -------------------- ----------
+  FORD                       7902
+  ADAMS                      7876
+  SCOTT                      7788
+  JONES                      7566
+  SMITH                      7369
+  JAMES                      7900
+  TURNER                     7844
+  BLAKE                      7698
+  MARTIN                     7654
+  WARD                       7521
+  ALLEN                      7499
+  
+  11 rows selected.
+  
+  
+  
+  
+  -- A2
+  
+  SQL> select ename, deptno, sal
+    2  from emp
+    3  where sal>(select max(sal)
+    4    from emp
+    5    where deptno =20);
+  
+  ENAME                    DEPTNO        SAL
+  -------------------- ---------- ----------
+  KING                         10       5000
+  
+  
+  
+  -- A3
+  
+  SQL> select ename, hiredate, sal
+    2  from emp
+    3  where sal>(select avg(sal)
+    4    from emp
+    5    where hiredate like '82%');
+  
+  ENAME                HIREDATE        SAL
+  -------------------- -------- ----------
+  JONES                81/04/02       2975
+  BLAKE                81/05/01       2850
+  CLARK                81/06/09       2450
+  SCOTT                82/12/09       3000
+  KING                 81/11/17       5000
+  FORD                 81/12/03       3000
+  
+  6 rows selected.
+  ```
+
+  
+
+  * 다중열서브쿼리
+
+    : 두 개 이상의 컬럼과 다중행을 반환하는 서브쿼리
+
+      메인쿼리 비교 컬럼의 갯수, 종류가 서브쿼리의 반환 결과와 동일
+
+    
+
+    * 기본 형
+
+      where (col1, col2) int (select col1, col2...)
+
+    
+
+    **[실습]**
+
+    각 부서별로 최소 급여를 받는 사원의 정보(사원명, 부서코드, 급여, 입사일) 출력
+
+  ```mysql
+  -- [Answer]
+  SQL>  select ename, deptno,sal, hiredate
+    2   from emp
+    3   where (sal, deptno) in (select min(sal), deptno
+    4                           from emp
+    5                           group by deptno);
+  
+  ENAME                    DEPTNO        SAL HIREDATE
+  -------------------- ---------- ---------- --------
+  SMITH                        20        800 80/12/17
+  JAMES                        30        950 81/12/03
+  MILLER                       10       1300 82/01/23
+  
+  
+  -- [problem case]
+  
+  SQL> select ename, deptno,sal, hiredate
+    2  from emp
+    3  where sal in (select min(sal)
+    4  from emp
+    5  group by deptno);
+  
+  ENAME                    DEPTNO        SAL HIREDATE
+  -------------------- ---------- ---------- --------
+  SMITH                        20        800 80/12/17
+  JAMES                        30        950 81/12/03
+  MILLER                       10       1300 82/01/23
+  ```
+
+  
+
+  
+
+  * 상관형 서브쿼리(상호연관서브쿼리)
+
+    : 메인쿼리의 값이 서브쿼리에서 사용되는 경우
+
+      메인쿼리 한 row에 대해 서브쿼리가 한 번씩 실행된다.
+
+      메인쿼리의 값이 어떤 값이냐에 따라 서브쿼리의 결과가 달라진다.
+
+    
+
+    * 실행 순서
+      1. 메인 쿼리에서 비교할 값을 가져온다.
+      2. 메인 쿼리에서 받은 값을 이용해서 서브쿼리가 실행된다.
+      3. 서브쿼리의 실행결과로 메인쿼리가 실행된다.
+      4. 메인쿼리의 레코드수만큼 반복된다.
+
+    
+
+    **[실습]**
+
+    소속 급여의 급여 평균보다 급여가 많은 사원들의 정보를 출력
+
+    ```mysql
+    SQL> select ename, deptno, sal
+      2  from emp e
+      3  where e.sal>(select avg(sal)
+      4             from emp em
+      5             where em.deptno = e.deptno
+      6             );
+      
+      
+     select ename, deptno, sal
+    from emp e
+    where e.sal>(select avg(sal)
+              from emp
+              group by e.deptno
+             );
+      
+      
+    
+    ENAME                    DEPTNO        SAL
+    -------------------- ---------- ----------
+    ALLEN                        30       1600
+    JONES                        20       2975
+    BLAKE                        30       2850
+    SCOTT                        20       3000
+    KING                         10       5000
+    FORD                         20       3000
+    
+    6 rows selected.
+    ```
+
+    
+
+  * from 절에서 사용하는 서브쿼리(inline view)
+
+    > from절에 서브쿼리를 추가해서 사용
+    >
+    > 서브쿼리 결과를 가상테이블로 사용하겠다는 의미
+    >
+    > from절에 추가되는 서브쿼리는 alias를 정의해야한다.
+    >
+    > from절에 추가되는 서브쿼리 내부의 컬럼은 실제 컬럼처럼 메인쿼리에서 사용해야 하므로 컬럼도 컬럼명이 존재하거나 alias를 정의해야 한다.
+
+    
+
+    * 기본형
+
+    ```mysql
+    select col1, ...
+    from (select col,....
+          from table_name
+          where ...
+          group by ....) alias_table_name;
+          
+          
+    -- ex)
+    -- view를 만들지 않고 테이블 즉석 생성
+    
+    SQL> select deptcode, countdata
+      2  from (select deptno as deptcode, count(empno) as countdata
+      3        from emp
+      4        group by deptno) mytable;
+    
+      DEPTCODE  COUNTDATA
+    ---------- ----------
+            30          6
+            20          5
+            10          3
+    ```
+
+    
+
+    **[실습]**
+
+    소속부서의 급여 평균보다 급여가 많은 사원들의 정보를 출력
+
+    → 조인과 from절에 추가하는 서브쿼리를 이용해서 작업
+
+    ```mysql
+    SQL> select e.ename, e.deptno, e.sal, d.avgsal
+      2  from emp e, (select deptno, avg(sal) avgsal
+      3               from emp
+      4               group by deptno) d
+      5  where e.deptno=d.deptno
+      6        and e.sal >d.avgsal;
+    
+    ENAME                    DEPTNO        SAL     AVGSAL
+    -------------------- ---------- ---------- ----------
+    BLAKE                        30       2850 1566.66667
+    ALLEN                        30       1600 1566.66667
+    FORD                         20       3000       2175
+    SCOTT                        20       3000       2175
+    JONES                        20       2975       2175
+    KING                         10       5000 2916.66667
+    
+    6 rows selected.
+    
+    ```
+
+    
+
+
+
+## 8) insert
+
+```mysql
+SQL> insert all
+  2  into  member values('lee', '1234','인천')
+  3  into  member values('park', '1234','강릉')
+  4  into  member values('kim', '1234','부산');
+into  member values('kim', '1234','부산')
+                                        *
+ERROR at line 4:
+ORA-00928: missing SELECT keyword
+
+-- 서브쿼리의 실행 결과를 insert all 하는 것이기 때문에 마지막에 select * from dual로
+
+SQL> insert all
+  2  into  member values('lee', '1234','인천')
+  3  into  member values('park', '1234','강릉')
+  4  into  member values('kim', '1234','부산')
+  5  select * from dual;
+
+3 rows created.
+
+-- web 서버 프로그래밍시 
+into ~부분은 for문으로 처리해서 붙여주기
+```
+
+
+
+* null 값 삽입
+
+```mysql
+SQL> insert into member values('jjang', null, null);
+
+1 row created.
+
+SQL> select * from member;
+
+ID                   PASS                 ADDR
+-------------------- -------------------- ----------------------------------------
+javng                1234                 서울
+lee                  1234                 인천
+park                 1234                 강릉
+kim                  1234                 부산
+jjang
+```
+
+
+
+
+
+## 9) delete
+
+```mysql
+SQL> commit;
+
+Commit complete.
+
+SQL> delete member;
+
+5 rows deleted.
+
+SQL> select * from member;
+
+no rows selected
+
+SQL> rollback;
+
+Rollback complete.
+
+SQL> select * from member;
+
+ID                   PASS                 ADDR
+-------------------- -------------------- ----------------------------------------
+javng                1234                 서울
+lee                  1234                 인천
+park                 1234                 강릉
+kim                  1234                 부산
+jjang
+```
+
+
+
+* 특정 데이터 삭제
+
+```mysql
+SQL> delete from member
+  2  where id = 'jjang';
+
+1 row deleted.
+
+SQL> select * from member;
+
+ID                   PASS                 ADDR
+-------------------- -------------------- -----------------------------------
+javng                1234                 서울
+lee                  1234                 인천
+park                 1234                 강릉
+kim                  1234                 부산
+```
+
+
+
+* where절 사용
+
+```mysql
+SQL> delete from member
+  2  where addr = (select addr
+  3                from member
+  4                where id = 'park');
+
+2 rows deleted.
+
+SQL> select * from member;
+
+ID                   PASS                 ADDR
+-------------------- -------------------- ---------------------------------------
+javng                1234                 서울
+kim                  1234                 부산
+
+```
+
+
+
+## 10) update (수정)
+
+* where절 사용
+
+```mysql
+SQL> update member
+  2  set addr = (select addr
+  3              from member
+  4              where id = 'park')
+  5  where id = 'lee';
+
+1 row updated.
+
+SQL> select * from member;
+
+ID                   PASS                 ADDR
+-------------------- -------------------- --------------------------------------
+javng                1234                 서울
+lee                  1234                 강릉
+park                 1234                 강릉
+kim                  1234                 부산
+
+```
 
 
 

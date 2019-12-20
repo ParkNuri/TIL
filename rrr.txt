@@ -1,0 +1,89 @@
+select ename, sal
+from emp
+where sal > (select avg(sal) 
+           from emp
+           where deptno = 10); 
+
+select *
+from emp
+where job in (select job
+             from emp
+             where deptno = 10);
+
+
+
+select ename, empno
+from emp
+where deptno in (select deptno
+		from emp
+		where instr(ename, 'T')!=0);
+
+
+
+
+
+q1)
+
+SQL> select ename, empno
+  2  from emp
+  3  where deptno in (select deptno
+  4  from emp
+  5  where instr(ename, 'T')!=0);
+
+ENAME                     EMPNO
+-------------------- ----------
+FORD                       7902
+ADAMS                      7876
+SCOTT                      7788
+JONES                      7566
+SMITH                      7369
+JAMES                      7900
+TURNER                     7844
+BLAKE                      7698
+MARTIN                     7654
+WARD                       7521
+ALLEN                      7499
+
+11 rows selected.
+
+
+
+
+q2)
+
+SQL> select ename, deptno, sal
+  2  from emp
+  3  where sal>(select max(sal)
+  4    from emp
+  5    where deptno =20);
+
+ENAME                    DEPTNO        SAL
+-------------------- ---------- ----------
+KING                         10       5000
+
+
+
+q3)
+
+SQL> select ename, hiredate, sal
+  2  from emp
+  3  where sal>(select avg(sal)
+  4    from emp
+  5    where hiredate like '82%');
+
+ENAME                HIREDATE        SAL
+-------------------- -------- ----------
+JONES                81/04/02       2975
+BLAKE                81/05/01       2850
+CLARK                81/06/09       2450
+SCOTT                82/12/09       3000
+KING                 81/11/17       5000
+FORD                 81/12/03       3000
+
+6 rows selected.
+
+
+
+
+
+
