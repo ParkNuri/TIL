@@ -1,0 +1,695 @@
+
+
+
+SQL*Plus: Release 11.2.0.2.0 Production on 월 12월 23 08:41:15 2019
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+SQL> conn scott/tiger
+ERROR:
+ORA-01033: ORACLE initialization or shutdown in progress
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+SQL> conn system/manager
+Connected.
+SQL> conn scott/tiger
+Connected.
+SQL> SET LINESIZE 300;
+SQL> SET PAGESIZE 500;
+SQL> SELECT
+  2  *
+  3  FROM TAB;
+
+TNAME                                                        TABTYPE         CLUSTERID
+------------------------------------------------------------ -------------- ----------
+COUNTDATA                                                    VIEW
+CUSTOMER                                                     TABLE
+DEPT                                                         TABLE
+EMP                                                          TABLE
+FACTORY                                                      TABLE
+LOCATIONS                                                    TABLE
+MEMBER                                                       TABLE
+PRODUCT                                                      TABLE
+SALGRADE                                                     TABLE
+STORE                                                        TABLE
+TEST                                                         TABLE
+
+11 rows selected.
+
+SQL> -----------
+SQL>         --
+SQL>       --
+SQL>     --  --
+SQL>   --     --
+SQL> --        --
+SQL>      --
+SQL>      --
+SQL>      --
+SQL> -------------
+SQL>
+SQL>  ----------
+SQL>          --
+SQL>  ----------
+SQL>  --
+SQL>  ----------
+SQL>
+SQL>
+SQL>  -------
+SQL>       --
+SQL>  -------  --
+SQL>  --
+SQL>  -------  ---
+SQL>            --
+SQL>            --
+SQL> '
+SP2-0042: unknown command "'" - rest of line ignored.
+SQL> ALTER TABLE MEMBER
+  2  ADD (POINT NUMBER , NAME VACHAR2(20), EMAIL VARCHAR2(20);
+ADD (POINT NUMBER , NAME VACHAR2(20), EMAIL VARCHAR2(20)
+                                *
+ERROR at line 2:
+ORA-00907: missing right parenthesis
+
+
+SQL> ALTER TABLE MEMBER
+  2  ADD (POINT NUMBER, NAME VACHAR2(20), EMAIL VARCHAR2(20);
+ADD (POINT NUMBER, NAME VACHAR2(20), EMAIL VARCHAR2(20)
+                               *
+ERROR at line 2:
+ORA-00907: missing right parenthesis
+
+
+SQL> ALTER TABLE MEMBER
+  2  ADD (POINT NUMBER, NAME VARCHAR2(20), EMAIL VARCHAR2(20);
+ADD (POINT NUMBER, NAME VARCHAR2(20), EMAIL VARCHAR2(20)
+                                                       *
+ERROR at line 2:
+ORA-00907: missing right parenthesis
+
+
+SQL> alter table memver
+  2  ;
+
+*
+ERROR at line 2:
+ORA-02210: no options specified for ALTER TABLE
+
+
+SQL> alter table member
+  2  add(point number, name varchar2(20), email varchar2(20);
+add(point number, name varchar2(20), email varchar2(20)
+                                                      *
+ERROR at line 2:
+ORA-00907: missing right parenthesis
+
+
+SQL> alter table member
+  2  add(point number, name varchar2(20), email varchar2(20));
+
+Table altered.
+
+SQL> alter table memner
+  2  ;
+
+*
+ERROR at line 2:
+ORA-02210: no options specified for ALTER TABLE
+
+
+SQL> alter table member
+  2  add(tel varchar2(15), info varchar2(10));
+
+Table altered.
+
+SQL> alter table member
+  2  modifiy(tel char(11))'
+  3  ;
+modifiy(tel char(11))'
+*
+ERROR at line 2:
+ORA-01735: invalid ALTER TABLE option
+
+
+SQL> alter table member
+  2  modifiy(tel char(11))
+  3  ;
+modifiy(tel char(11))
+*
+ERROR at line 2:
+ORA-01735: invalid ALTER TABLE option
+
+
+SQL> alter table member
+  2  modify(tel char(11))
+  3  ;
+
+Table altered.
+
+SQL> desc member;
+ Name                                                                                                                                                                          Null?    Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- --------------------------------------------------------------------------------------------------------------------
+ ID                                                                                                                                                                                     VARCHAR2(10)
+ PASS                                                                                                                                                                                   VARCHAR2(10)
+ ADDR                                                                                                                                                                                   VARCHAR2(20)
+ POINT                                                                                                                                                                                  NUMBER
+ NAME                                                                                                                                                                                   VARCHAR2(20)
+ EMAIL                                                                                                                                                                                  VARCHAR2(20)
+ TEL                                                                                                                                                                                    CHAR(11)
+ INFO                                                                                                                                                                                   VARCHAR2(10)
+
+SQL> alter table member
+  2  drop column info;
+
+Table altered.
+
+SQL> desc member;
+ Name                                                                                                                                                                          Null?    Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- --------------------------------------------------------------------------------------------------------------------
+ ID                                                                                                                                                                                     VARCHAR2(10)
+ PASS                                                                                                                                                                                   VARCHAR2(10)
+ ADDR                                                                                                                                                                                   VARCHAR2(20)
+ POINT                                                                                                                                                                                  NUMBER
+ NAME                                                                                                                                                                                   VARCHAR2(20)
+ EMAIL                                                                                                                                                                                  VARCHAR2(20)
+ TEL                                                                                                                                                                                    CHAR(11)
+
+SQL> ALTER TABLE MEMBER
+  2  RENAME COLUMN ADDR TO ADDRESS;
+
+Table altered.
+
+SQL> DESC MEMBER
+ Name                                                                                                                                                                          Null?    Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- --------------------------------------------------------------------------------------------------------------------
+ ID                                                                                                                                                                                     VARCHAR2(10)
+ PASS                                                                                                                                                                                   VARCHAR2(10)
+ ADDRESS                                                                                                                                                                                VARCHAR2(20)
+ POINT                                                                                                                                                                                  NUMBER
+ NAME                                                                                                                                                                                   VARCHAR2(20)
+ EMAIL                                                                                                                                                                                  VARCHAR2(20)
+ TEL                                                                                                                                                                                    CHAR(11)
+
+SQL> drop table member;
+
+Table dropped.
+
+SQL> select * from tab;
+
+TNAME                                                        TABTYPE         CLUSTERID
+------------------------------------------------------------ -------------- ----------
+COUNTDATA                                                    VIEW
+CUSTOMER                                                     TABLE
+DEPT                                                         TABLE
+EMP                                                          TABLE
+FACTORY                                                      TABLE
+LOCATIONS                                                    TABLE
+PRODUCT                                                      TABLE
+SALGRADE                                                     TABLE
+STORE                                                        TABLE
+TEST                                                         TABLE
+
+10 rows selected.
+
+SQL> CREATE TABLE MEMBER(
+  2  ID VARCHAR2(10)primary key,
+  3  pass varchar2(10),
+  4  name varchar2(20) not null,
+  5  addr varchar2(20));
+
+Table created.
+
+SQL> insert into member (id, name) values ('jang', null);
+insert into member (id, name) values ('jang', null)
+                                              *
+ERROR at line 1:
+ORA-01400: cannot insert NULL into ("SCOTT"."MEMBER"."NAME")
+
+
+SQL> desc user_constraints;
+ Name                                                                                                                                                                          Null?    Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- --------------------------------------------------------------------------------------------------------------------
+ OWNER                                                                                                                                                                                  VARCHAR2(120)
+ CONSTRAINT_NAME                                                                                                                                                               NOT NULL VARCHAR2(30)
+ CONSTRAINT_TYPE                                                                                                                                                                        VARCHAR2(1)
+ TABLE_NAME                                                                                                                                                                    NOT NULL VARCHAR2(30)
+ SEARCH_CONDITION                                                                                                                                                                       LONG
+ R_OWNER                                                                                                                                                                                VARCHAR2(120)
+ R_CONSTRAINT_NAME                                                                                                                                                                      VARCHAR2(30)
+ DELETE_RULE                                                                                                                                                                            VARCHAR2(9)
+ STATUS                                                                                                                                                                                 VARCHAR2(8)
+ DEFERRABLE                                                                                                                                                                             VARCHAR2(14)
+ DEFERRED                                                                                                                                                                               VARCHAR2(9)
+ VALIDATED                                                                                                                                                                              VARCHAR2(13)
+ GENERATED                                                                                                                                                                              VARCHAR2(14)
+ BAD                                                                                                                                                                                    VARCHAR2(3)
+ RELY                                                                                                                                                                                   VARCHAR2(4)
+ LAST_CHANGE                                                                                                                                                                            DATE
+ INDEX_OWNER                                                                                                                                                                            VARCHAR2(30)
+ INDEX_NAME                                                                                                                                                                             VARCHAR2(30)
+ INVALID                                                                                                                                                                                VARCHAR2(7)
+ VIEW_RELATED                                                                                                                                                                           VARCHAR2(14)
+
+SQL> select owner, constaint_name, constraint_type, table name
+  2  from user_constraints;
+select owner, constaint_name, constraint_type, table name
+                                               *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+
+select owner, constraint_name, constraint_type, table_name
+from user_constraints;
+
+
+SQL> select owner, constraint_name, constraint_type, table_name
+  2  from user_constraints;
+
+OWNER
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+CONSTRAINT_NAME                                              CO TABLE_NAME
+------------------------------------------------------------ -- ------------------------------------------------------------
+SCOTT
+SYS_C006997                                                  C  CUSTOMER
+
+SCOTT
+SYS_C006998                                                  P  CUSTOMER
+
+SCOTT
+SYS_C007000                                                  C  PRODUCT
+
+SCOTT
+SYS_C007001                                                  P  PRODUCT
+
+SCOTT
+SYS_C007002                                                  C  FACTORY
+
+SCOTT
+SYS_C007003                                                  P  FACTORY
+
+SCOTT
+SYS_C007004                                                  C  STORE
+
+SCOTT
+SYS_C007005                                                  P  STORE
+
+SCOTT
+SYS_C007006                                                  P  EMP
+
+SCOTT
+SYS_C007007                                                  C  MEMBER
+
+SCOTT
+SYS_C007008                                                  P  MEMBER
+
+
+11 rows selected.
+
+SQL> alter table member
+  2  add(ssn varchar2(15));
+
+Table altered.
+
+SQL> desc table;
+ERROR:
+ORA-00931: missing identifier
+
+
+SQL> desc member;
+ Name                                                                                                                                                                          Null?    Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- --------------------------------------------------------------------------------------------------------------------
+ ID                                                                                                                                                                            NOT NULL VARCHAR2(10)
+ PASS                                                                                                                                                                                   VARCHAR2(10)
+ NAME                                                                                                                                                                          NOT NULL VARCHAR2(20)
+ ADDR                                                                                                                                                                                   VARCHAR2(20)
+ SSN                                                                                                                                                                                    VARCHAR2(15)
+
+SQL> alter table member
+  2  add constraint mem_ssn_unique;
+add constraint mem_ssn_unique
+                            *
+ERROR at line 2:
+ORA-00904: : invalid identifier
+
+
+SQL> alter table member
+  2  add constraint mem_ssn_unique unique(2);
+add constraint mem_ssn_unique unique(2)
+                                     *
+ERROR at line 2:
+ORA-00904: : invalid identifier
+
+
+SQL> add constraint mem_ssn_unique unique(2);
+SP2-0734: unknown command beginning "add constr..." - rest of line ignored.
+SQL> add constraint mem_ssn_unique unique(ssn);
+SP2-0734: unknown command beginning "add constr..." - rest of line ignored.
+SQL> alter table member
+  2  add constraint mem_ssn_unique unique(ssn);
+
+Table altered.
+
+SQL> insert into member (id, name, ssn) values('jang',
+  2  '장동건', '12345');
+
+1 row created.
+
+SQL> insert into member (id, name, ssn) values('jang',
+  2  '장동건', '12345');
+insert into member (id, name, ssn) values('jang',
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SCOTT.SYS_C007008) violated
+
+
+SQL> create table mydept(
+  2     code varchar2(20) primary key,
+  3     name varchar2(20));
+
+Table created.
+
+SQL> insert into mydept values('001', '전산실');
+
+1 row created.
+
+SQL> insert into mydept values('002', '인사팀');
+
+1 row created.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> alter table member
+  2  add (deptcode varchar2(20));
+
+Table altered.
+
+SQL> desc member;
+ Name                                                                                                                                                                          Null?    Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- --------------------------------------------------------------------------------------------------------------------
+ ID                                                                                                                                                                            NOT NULL VARCHAR2(10)
+ PASS                                                                                                                                                                                   VARCHAR2(10)
+ NAME                                                                                                                                                                          NOT NULL VARCHAR2(20)
+ ADDR                                                                                                                                                                                   VARCHAR2(20)
+ SSN                                                                                                                                                                                    VARCHAR2(15)
+ DEPTCODE                                                                                                                                                                               VARCHAR2(20)
+
+SQL> alter table member
+  2  add constraint mem_dcode_fk foreign key (deptcode)
+  3                 references mydept (code);
+
+Table altered.
+
+SQL> select owner, constraint_name, constraint_type, table_name
+  2  from user_constraints;
+
+OWNER
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+CONSTRAINT_NAME                                              CO TABLE_NAME
+------------------------------------------------------------ -- ------------------------------------------------------------
+SCOTT
+SYS_C006997                                                  C  CUSTOMER
+
+SCOTT
+SYS_C006998                                                  P  CUSTOMER
+
+SCOTT
+SYS_C007000                                                  C  PRODUCT
+
+SCOTT
+SYS_C007001                                                  P  PRODUCT
+
+SCOTT
+SYS_C007002                                                  C  FACTORY
+
+SCOTT
+SYS_C007003                                                  P  FACTORY
+
+SCOTT
+SYS_C007004                                                  C  STORE
+
+SCOTT
+SYS_C007005                                                  P  STORE
+
+SCOTT
+SYS_C007006                                                  P  EMP
+
+SCOTT
+SYS_C007007                                                  C  MEMBER
+
+SCOTT
+SYS_C007008                                                  P  MEMBER
+
+SCOTT
+MEM_SSN_UNIQUE                                               U  MEMBER
+
+SCOTT
+SYS_C007010                                                  P  MYDEPT
+
+SCOTT
+MEM_DCODE_FK                                                 R  MEMBER
+
+
+14 rows selected.
+
+SQL> insert into member(id, name, ssn, deptcode) values ('lee', '이민호', '54321', '001');
+
+1 row created.
+
+SQL> insert into member(id, name, ssn, deptcode) values ('lee', '이민호', '54321', '003');
+insert into member(id, name, ssn, deptcode) values ('lee', '이민호', '54321', '003')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SCOTT.SYS_C007008) violated
+
+
+SQL> insert into member(id, name, ssn, deptcode) values ('leee', '이민호', '54321', '003');
+insert into member(id, name, ssn, deptcode) values ('leee', '이민호', '54321', '003')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SCOTT.MEM_SSN_UNIQUE) violated
+
+
+SQL> insert into member(id, name, ssn, deptcode) values ('leee', '이민호', '504321', '003');
+insert into member(id, name, ssn, deptcode) values ('leee', '이민호', '504321', '003')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (SCOTT.MEM_DCODE_FK) violated - parent key not found
+
+
+SQL> drop table mydept;
+drop table mydept
+           *
+ERROR at line 1:
+ORA-02449: unique/primary keys in table referenced by foreign keys
+
+
+SQL> drop mydept;
+drop mydept
+     *
+ERROR at line 1:
+ORA-00950: invalid DROP option
+
+
+SQL> select owner, constraint_name, constraint_type, table_name
+  2  from user_constraints;
+
+OWNER
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+CONSTRAINT_NAME                                              CO TABLE_NAME
+------------------------------------------------------------ -- ------------------------------------------------------------
+SCOTT
+SYS_C006997                                                  C  CUSTOMER
+
+SCOTT
+SYS_C006998                                                  P  CUSTOMER
+
+SCOTT
+SYS_C007000                                                  C  PRODUCT
+
+SCOTT
+SYS_C007001                                                  P  PRODUCT
+
+SCOTT
+SYS_C007002                                                  C  FACTORY
+
+SCOTT
+SYS_C007003                                                  P  FACTORY
+
+SCOTT
+SYS_C007004                                                  C  STORE
+
+SCOTT
+SYS_C007005                                                  P  STORE
+
+SCOTT
+SYS_C007006                                                  P  EMP
+
+SCOTT
+SYS_C007007                                                  C  MEMBER
+
+SCOTT
+SYS_C007008                                                  P  MEMBER
+
+SCOTT
+MEM_SSN_UNIQUE                                               U  MEMBER
+
+SCOTT
+SYS_C007010                                                  P  MYDEPT
+
+SCOTT
+MEM_DCODE_FK                                                 R  MEMBER
+
+
+14 rows selected.
+
+SQL> desc member;
+ Name                                                                                                                                                                          Null?    Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- --------------------------------------------------------------------------------------------------------------------
+ ID                                                                                                                                                                            NOT NULL VARCHAR2(10)
+ PASS                                                                                                                                                                                   VARCHAR2(10)
+ NAME                                                                                                                                                                          NOT NULL VARCHAR2(20)
+ ADDR                                                                                                                                                                                   VARCHAR2(20)
+ SSN                                                                                                                                                                                    VARCHAR2(15)
+ DEPTCODE                                                                                                                                                                               VARCHAR2(20)
+
+SQL> alter table member
+  2  add constraint member_ck check(addr in ('인천', '서울', '경기'));
+
+Table altered.
+
+SQL> insert into member(id, name, addr) values ('kang', '강지환', '인천');
+
+1 row created.
+
+SQL> insert into member(id, name, addr) values ('kang', '강지환2', '부산');
+insert into member(id, name, addr) values ('kang', '강지환2', '부산')
+*
+ERROR at line 1:
+ORA-02290: check constraint (SCOTT.MEMBER_CK) violated
+
+
+SQL> alter table member
+  2  drop constraint MEMBER_CK;
+
+Table altered.
+
+SQL> create table myorder(
+  2         ord_num varchar2(10) primary key;
+            ord_num varchar2(10) primary key
+                                           *
+ERROR at line 2:
+ORA-00907: missing right parenthesis
+
+
+SQL> create table myorder(
+  2         ord_num varchar2(10) primary key
+  3         id varchar2(10));
+            id varchar2(10))
+            *
+ERROR at line 3:
+ORA-00907: missing right parenthesis
+
+
+SQL> create table myorder(
+  2         ord_num varchar2(10) primary key
+  3         , id varchar2(10));
+
+Table created.
+
+SQL> create table order_detail(
+  2         ord_num varchar2(10),
+  3         ord_num varchar2(20));
+            ord_num varchar2(20))
+            *
+ERROR at line 3:
+ORA-00957: duplicate column name
+
+
+SQL> create table order_detail(
+  2         ord_num varchar2(10),
+  3         prd_num varchar2(20));
+
+Table created.
+
+SQL> create sequence myorder_seq;
+
+Sequence created.
+
+SQL> insert into myorder values(myorder_seq.nextval, 'jang');
+
+1 row created.
+
+SQL> insert into order_detail values (myorder_seq.currval,'prd001');
+
+1 row created.
+
+SQL> insert into order_detail values (myorder_seq.currval,'prd002');
+
+1 row created.
+
+SQL> insert into order_detail values (myorder_seq.currval,'prd003');
+
+1 row created.
+
+SQL> select * from myorder;
+
+ORD_NUM              ID
+-------------------- --------------------
+1                    jang
+
+SQL> select * from order_detail;
+
+ORD_NUM              PRD_NUM
+-------------------- ----------------------------------------
+1                    prd001
+1                    prd002
+1                    prd003
+
+SQL> insert into myorder values(myorder_seq.nextval, 'jang');
+
+1 row created.
+
+SQL> insert into myorder values(myorder_seq.nextval, 'jang');
+
+1 row created.
+
+SQL> select * from myorder;
+
+ORD_NUM              ID
+-------------------- --------------------
+1                    jang
+2                    jang
+3                    jang
+
+SQL> select * from order_detail;
+
+ORD_NUM              PRD_NUM
+-------------------- ----------------------------------------
+1                    prd001
+1                    prd002
+1                    prd003
+
+SQL> select myorder_seq.currval from dual;
+
+   CURRVAL
+----------
+         3
+
+
+
+
+create table tb_board(
+          boardNum number(10) primary key,
+          id varchar2(20),
+          title varchar2(20),
+          content varchar2(20),
+          write_date date,
+          hit number(10));
+
+
+
+

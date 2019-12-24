@@ -57,7 +57,9 @@ Connected.
 
   : 데이터 정의어 .
 
-  - create, drop, alter
+  - create : 테이블 생성
+  - drop : 테이블 삭제
+  - alter : 테이블 수정 (컬럼 추가/삭제/변경)
 
 * DML (Data Manipulation Language)
 
@@ -78,7 +80,7 @@ Connected.
 
 #  3.  Query 
 
-
+## ||DML||
 
 ## 1) 기본 select
 
@@ -2215,6 +2217,231 @@ park                 1234                 강릉
 kim                  1234                 부산
 
 ```
+
+
+
+
+
+
+
+## ||DDL||
+
+## 1) create
+
+```mysql
+CREATE TABLE TABLE_NAME(
+	COL1_NAME DATA_TYPE(SIZE) [CONSTRAINT],
+	COL2_NAME DATA_TYPE(SIZE) [CONSTRAINT],
+	COL3_NAME DATA_TYPE(SIZE) [CONSTRAINT],
+	...
+)
+
+
+
+ex)
+
+CREATE TABLE MEMBER(
+	ID VARCHAR2(10),
+	PASS VARCHAR2(10),
+	ADDR VARCHAR2(20),
+	POINT NUMBER,
+	NAME VARCHAR2(20),
+	EMAIL VARCHAR2(20),
+	TEL CHAR(11),
+	INFO VARCHAR2(10)
+);
+```
+
+* 테이블 구조 보는 명령어
+
+  ```MYSQL
+  DESC DEPT;
+  ```
+
+  
+
+## 2) alter
+
+* ADD
+
+  ```mysql
+  
+  ```
+
+  
+
+* MODIFY
+
+  ```mysql
+  
+  ```
+
+  
+
+* RENAME
+
+  ```mysql
+  
+  ```
+
+  
+
+## 3) drop
+
+
+
+
+
+
+
+* **check** constraint
+
+: 지정한 값만
+
+```mysql
+-- check 제약조건 주기	// check 뒤 괄호에는 in, between 등등 올 수 있다.
+SQL> alter table member
+  2  add constraint member_ck check(addr in ('인천', '서울', '경기'));
+
+Table altered.
+
+-- 
+SQL> insert into member(id, name, addr) values ('kang', '강지환', '인천');
+
+1 row created.
+
+
+-- 제약 조건에 위배되는 값이 insert 되었을 때
+SQL> insert into member(id, name, addr) values ('kang', '강지환2', '부산');
+
+insert into member(id, name, addr) values ('kang', '강지환2', '부산')
+*
+ERROR at line 1:
+ORA-02290: check constraint (SCOTT.MEMBER_CK) violated
+```
+
+
+
+```mysql
+-- 제약조건 제거
+SQL> alter table member
+  2  drop constraint MEMBER_CK;
+
+Table altered.
+```
+
+
+
+
+
+## 시퀀스 object
+
+: 하나 하나 순차적으로 저장되는 값을 컬럼에 저장해야 할 때 사용
+
+ex) 게시판 글 번호, 주문번호(날짜+자릿수), ...
+
+```mysql
+SQL> create table myorder(
+  2         ord_num varchar2(10) primary key
+  3         , id varchar2(10));
+
+Table created.
+
+SQL> create table order_detail(
+  2         ord_num varchar2(10),
+  3         prd_num varchar2(20));
+
+Table created.
+
+SQL> create sequence myorder_seq;
+
+Sequence created.
+
+SQL> insert into myorder values(myorder_seq.nextval, 'jang');
+
+1 row created.
+
+SQL> insert into order_detail values (myorder_seq.currval,'prd001');
+
+1 row created.
+
+
+SQL> insert into order_detail values (myorder_seq.currval,'prd002');
+
+1 row created.
+
+SQL> insert into order_detail values (myorder_seq.currval,'prd003');
+
+1 row created.
+
+SQL> select * from myorder;
+
+ORD_NUM              ID
+-------------------- --------------------
+1                    jang
+
+SQL> select * from order_detail;
+
+ORD_NUM              PRD_NUM
+-------------------- ----------------------------------------
+1                    prd001
+1                    prd002
+1                    prd003
+
+SQL> insert into myorder values(myorder_seq.nextval, 'jang');
+
+1 row created.
+
+SQL> insert into myorder values(myorder_seq.nextval, 'jang');
+
+1 row created.
+
+SQL> select * from myorder;
+
+ORD_NUM              ID
+-------------------- --------------------
+1                    jang
+2                    jang
+3                    jang
+
+SQL> select * from order_detail;
+
+ORD_NUM              PRD_NUM
+-------------------- ----------------------------------------
+1                    prd001
+1                    prd002
+1                    prd003
+
+SQL> select myorder_seq.currval from dual;
+
+   CURRVAL
+----------
+         3
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

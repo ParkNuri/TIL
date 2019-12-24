@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="workbook.section5.Ltab"/>
-<fullyQualifiedTypeName name="workbook.section5.Mobile"/>
-<fullyQualifiedTypeName name="workbook.section5.MobileTest"/>
-<fullyQualifiedTypeName name="chap07_oop.Dessert"/>
 <fullyQualifiedTypeName name="chap07_oop.FinalSuper"/>
 <fullyQualifiedTypeName name="chap07_oop.FinalSub"/>
 <fullyQualifiedTypeName name="chap07_oop.poly.AbstractSuper"/>
@@ -60,4 +56,8 @@
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="java.lang.StringBuffer"/>
 <fullyQualifiedTypeName name="java.util.StringTokenizer"/>
+<fullyQualifiedTypeName name="jdbc.basic.ConnectionTest"/>
+<fullyQualifiedTypeName name="java.sql.DriverManager"/>
+<fullyQualifiedTypeName name="java.sql.Statement"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
 </qualifiedTypeNameHistroy>
