@@ -2,20 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="package chap08_exception;" key="selection"/>
+		<item value="package jdbc.board.exam;" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="package jdbc.board.exam;"/>
+			<item value="stmt"/>
 			<item value="package chap08_exception;"/>
 			<item value="account"/>
 			<item value="prin"/>
 			<item value="상속테스트"/>
 			<item value="before"/>
 			<item value="String(String"/>
-			<item value="String(String&apos;"/>
-			<item value="3"/>
 		</list>
 		<list key="replacehistory">
 			<item value="accid"/>

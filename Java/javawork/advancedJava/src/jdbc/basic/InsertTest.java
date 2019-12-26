@@ -12,7 +12,7 @@ public class InsertTest {
 		String user = "scott";
 		String password = "tiger";
 //		String sql = "insert into tb_board values(board_seq.nextval,'jang','연습','연습',sysdate,0)";	//java 내부 sql에서는 세미콜론(;)을 찍지 않는다
-		String sql = "insert into tb_board values(2,'jang','연습','연습',sysdate,0)";	//java 내부 sql에서는 세미콜론(;)을 찍지 않는다
+		String sql = "insert into tb_board values(21,'jang','연습','연습',sysdate,0)";	//java 내부 sql에서는 세미콜론(;)을 찍지 않는다
 		try {
 			//1. 오라클 드라이버 로딩
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -25,9 +25,11 @@ public class InsertTest {
 			Statement stmt = con.createStatement();
 			System.out.println("SQL을 실행하기위한 객체정보:"+stmt);	//oracle.jdbc.driver.OracleStatementWrapper 리턴 (Statement 객체가 아닌 oracle 객체 맵핑됨)
 			
+			System.out.println("1개행 삽입성공");
 			//4. sql실행하기
-			stmt.executeUpdate(sql);
-			System.out.println("삽입 성공");
+			int result = stmt.executeUpdate(sql);
+			//stmt.executeUpdate(sql);x	
+			//System.out.println("삽입 성공");
 		} catch (ClassNotFoundException e) {
 			System.out.println("드라이버 로딩 실패..");
 		} catch (SQLException e) {
