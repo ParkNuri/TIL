@@ -7,13 +7,16 @@ import jdbc.basic.PreparedDeleteTest;
 public class BoardDaoTest {
 
 	public static void main(String[] args) {
-		Scanner key = new Scanner(System.in);
-		BoardDAO dao = new BoardDAO();
 
+		
+		
+		Scanner key = new Scanner(System.in);
+		BoardDAOImpl dao = new BoardDAOImpl();
+/*
 		boolean status = true;
 
 		while (status) {
-
+			
 			System.out.println("1. 게시글 등록\n2.게시글 삭제\n3.게시글 아이디 수정\n4. 게시글 목록\n0. 프로그램 종료");
 			System.out.print("수행할 작업을 선택하세요. : ");
 			int funcNum = key.nextInt();
@@ -61,7 +64,8 @@ public class BoardDaoTest {
 			}
 		}
 		System.out.println("프로그램 종료");
-
+ */
+		dao.select();
 	}
 
 }

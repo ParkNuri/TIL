@@ -25,6 +25,7 @@ public class Coffee extends Beverage {
 		case "CafeLatte":setPrice(2500);break;
 		case "Cappuccino":setPrice(3000);break;
 		}
+		
 	}
 
 	//Getter & Setter

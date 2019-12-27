@@ -7,13 +7,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 //tb_board테이블을 엑세스하는 기능이 정의된 클래스
-public class BoardDAO {
+public interface BoardDAO {
 	
 	
-	
-	public void insert(String id, String title, String content) {
 		
-
+		int insert(BoardDTO board);
+		int insert(String id, String title, String content);
+		int update(int boardNum, String id);
+		int delete(int boardNum);
+		void select();
+	
+		
+		
+/*
+	public void insert(String id, String title, String content) {
 		String sql = "insert into tb_board values(board_seq.nextval,?,?,?,sysdate,0)";
 		PreparedStatement ptmt = null;
 
@@ -142,8 +149,8 @@ public class BoardDAO {
 				e.printStackTrace();
 			}
 
-		}
-	}
+		}*/
+	
 
 
 }

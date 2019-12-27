@@ -6,8 +6,8 @@ public class Rectangle extends Shape implements Movable {
 	
 	public Rectangle() {};
 	public Rectangle(int width, int x, int y) {
-		super(new Point(x,y));
-		
+		//super(new Point(x,y));
+		super(x,y);
 		this.width = width;
 	}
 	
@@ -23,7 +23,6 @@ public class Rectangle extends Shape implements Movable {
 	}
 	@Override
 	public double getCircumference() {
-		// TODO Auto-generated method stub
 		return 4*width;
 	}
 	

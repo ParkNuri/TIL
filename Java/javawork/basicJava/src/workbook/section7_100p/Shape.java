@@ -8,7 +8,9 @@ public abstract class Shape {
 	public Shape(Point point) {
 		this.point = point;
 	}
-	
+	public Shape(int x, int y) {
+		this.point = new Point(x,y);
+	}
 	
 	public abstract double getArea();
 	public abstract double getCircumference();
