@@ -5,18 +5,22 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 //tb_board테이블을 엑세스하는 기능이 정의된 클래스
 public interface BoardDAO {
 	
 	
 		
-		int insert(BoardDTO board);
-		int insert(String id, String title, String content);
-		int update(int boardNum, String id);
-		int delete(int boardNum);
-		void select();
-	
+		int insert(BoardDTO board);//게시글 등록 - C
+		int insert(String id, String title, String content);//게시글등록
+		int update(int boardNum, String id);// 게시글 수정 - U
+		int delete(int boardNum);//게시글 삭제-D
+		ArrayList<BoardDTO> select();//전체 게시글 조회 - L
+		BoardDTO read(int boardnum);//게시글 조회 - R
+		ArrayList<BoardDTO> findByTitle(String title);//게시글 검색 - L
+		
+		int updateHit(int boardnum);//hit수 증가 
 		
 		
 /*

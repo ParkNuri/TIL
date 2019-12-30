@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="workbook.section6_82p.L3"/>
-<fullyQualifiedTypeName name="java.lang.SecurityException"/>
-<fullyQualifiedTypeName name="workbook.section7_100p.Movable"/>
-<fullyQualifiedTypeName name="workbook.section7_100p.Shape"/>
-<fullyQualifiedTypeName name="workbook.section7_100p.Rectangle"/>
 <fullyQualifiedTypeName name="java.util.InputMismatchException"/>
 <fullyQualifiedTypeName name="java.util.Stack"/>
 <fullyQualifiedTypeName name="java.lang.ArrayIndexOutOfBoundsException"/>
@@ -39,25 +34,30 @@
 <fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="jdbc.basic.PreparedSelectTest"/>
-<fullyQualifiedTypeName name="jdbc.board.exam.BoardDAO"/>
 <fullyQualifiedTypeName name="jdbc.board.exam.BoardDAOImpl"/>
-<fullyQualifiedTypeName name="jdbc.board.exam.DBUtil"/>
 <fullyQualifiedTypeName name="java.sql.SQLException"/>
 <fullyQualifiedTypeName name="java.sql.DriverManager"/>
-<fullyQualifiedTypeName name="java.sql.ResultSet"/>
 <fullyQualifiedTypeName name="java.sql.Statement"/>
 <fullyQualifiedTypeName name="jdbc.basic.PreparedDeleteTest"/>
-<fullyQualifiedTypeName name="java.sql.Connection"/>
-<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
-<fullyQualifiedTypeName name="jdbc.member.exam.DBUtil"/>
 <fullyQualifiedTypeName name="java.time.LocalDate"/>
 <fullyQualifiedTypeName name="java.util.Locale"/>
 <fullyQualifiedTypeName name="jdbc.member.exam.MemberDAO"/>
 <fullyQualifiedTypeName name="java.util.Vector"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="jdbc.custmer.test.CustomerDTO"/>
 <fullyQualifiedTypeName name="jdbc.custmer.test.CustomerDAO"/>
 <fullyQualifiedTypeName name="java.sql.Date"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="api.util.StudentDTO"/>
+<fullyQualifiedTypeName name="java.util.concurrent.locks.StampedLock"/>
+<fullyQualifiedTypeName name="jdbc.board.exam.BoardDAO"/>
+<fullyQualifiedTypeName name="jdbc.board.exam.BoardDTO"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="jdbc.member.exam.DBUtil"/>
+<fullyQualifiedTypeName name="java.sql.ResultSet"/>
+<fullyQualifiedTypeName name="jdbc.member.exam.MemberDAOImpl"/>
+<fullyQualifiedTypeName name="jdbc.member.exam.MemberDTO"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+<fullyQualifiedTypeName name="jdbc.board.exam.DBUtil"/>
 </qualifiedTypeNameHistroy>

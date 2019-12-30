@@ -14,7 +14,13 @@ public class BoardDTO {
 	
 	//select용
 	public BoardDTO(int boardNum, String id, String title, String content, Date writeDate, int hit) {
-		
+		super();
+		this.boardNum = boardNum;
+		this.id = id;
+		this.title = title;
+		this.content = content;
+		this.writeDate = writeDate;
+		this.hit = hit;
 	}
 	//insert용
 	public BoardDTO(String id, String title, String content) {
@@ -24,21 +30,29 @@ public class BoardDTO {
 		this.content = content;
 				
 	}
-	//update용
-	public BoardDTO(String id, String ) {
-		
+/*	//update용
+	public BoardDTO(int boardNum, String id) {
+		super();
+		this.boardNum = boardNum;
+		this.id = id;
 	}
 	//delete용
-public BoardDTO(String id, String ) {
+	public BoardDTO(String id, String d) {
 		
-	}}
+	}*/
+
 	
 	
 	
 	
+	//toString
 	
 	
-	
+	@Override
+	public String toString() {
+		return "BoardDTO [boardNum=" + boardNum + ", id=" + id + ", title=" + title + ", content=" + content
+				+ ", writeDate=" + writeDate + ", hit=" + hit + "]";
+	}
 	
 	
 	
@@ -48,6 +62,7 @@ public BoardDTO(String id, String ) {
 	public int getBoardNum() {
 		return boardNum;
 	}
+
 
 	public void setBoardNum(int boardNum) {
 		this.boardNum = boardNum;

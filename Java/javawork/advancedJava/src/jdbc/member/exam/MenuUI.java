@@ -1,4 +1,5 @@
 package jdbc.member.exam;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MenuUI {
@@ -53,12 +54,41 @@ public class MenuUI {
 		System.out.print("주소:");
 		String addr = key.next();
 		//여기에서 EmpDAO의 메소드를 호출하세요
+		
+		ArrayList<MemberDTO> memArr = dao.findByAddr(addr);
+		MemberDTO member = new MemberDTO(); 
+		int size = memArr.size();
+		for (int i = 0; i < size; i++) {
+			member = memArr.get(i);
+			System.out.println(member.toString());
+		}
 	}
 	
 	
 	public void selectMenu(){
 		System.out.println("*******사원조회********");
 		//여기에서 EmpDAO의 메소드를 호출하세요 - 전체사원조회
+		ArrayList<MemberDTO> memArr = dao.memberList();
+		int size = memArr.size();
+		MemberDTO member = new MemberDTO();
+		for (int i = 0; i < size; i++) {
+			member = memArr.get(i);
+			System.out.println(member.toString());
+					
+		}
+		
+	}
+	public void loginMenu() {
+		System.out.println("*******로그인********");
+		System.out.print("아이디: ");
+		String id = key.next();
+		System.out.print("패스워드: ");
+		String pass = key.next();
+		
+		
+		dao.login(id, pass);
+		
+		
 	}
 }
 
