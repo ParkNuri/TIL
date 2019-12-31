@@ -1,0 +1,76 @@
+<!-- 정적 페이지 -->
+<!DOCTYPE html>
+<html>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<head>
+<meta charset="EUC-KR">
+<title>기본 html 연습</title>  <!-- tab name -->
+</head>
+<style>
+p3 {
+  background: -webkit-linear-gradient(#eee, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+</style>
+<body>
+	<!-- html 주석(클라이언트에 전송되는 주석:주의!! 중요내용 기술 x) 박누리 -->
+	<br><br><br><br>
+	<p3>안녕하세요 박누리입니다</p3><br>
+	<hr/>줄 긋기
+	<hr/>
+	<pre>작성한 그대로 보여지는 태그</pre>
+	특수문자 그대로 사용하려면 & 사용<br>
+	공백은 &nbsp;&nbsp; & nbsp &nbsp;&nbsp;사용
+	<p>지금은 html의 기본을 연습하는 시간입니다</p>
+	<h1>h1 글씨체</h1><!-- 줄바꿈+굵게 -->
+	<h2>h2 글씨체</h2>
+	<h3>h3 글씨체</h3>
+	<h4>h4 글씨체</h4>
+	<h5>h5 글씨체</h5>
+	<h6>h6 글씨체</h6>
+	<h7>h6 글씨체</h7>
+	
+	<font size="1" color="red" face="굴림">폰트</font>
+	<font size="2" color="green" face="궁서">폰트</font>
+	<font size="3" color="blue" face="굴림">폰트</font>
+	<font size="4" color="yellow" face="굴림">폰트</font>
+	<font size="5" color="orange" face="굴림">폰트</font>
+	<font size="6" color="#3168C7" face="굴림">폰트</font>
+	<br><br><br>
+	<h3>상대 경로로 이미지 삽입하기</h3>
+	<img src="jang1.jpg"/><!-- 해당 html파일이 위치한 context 폴더(clientWeb/html)에서 이미지를 찾음 -->
+	<img src="../images/jang1.jpg"/><!-- clientWeb/images 폴더에서 이미지를 찾음 --><br>
+	<h5>bolder = 10	</h5>
+	<img src="../images/jang1.jpg" width="200" height="300" border="10" alt="장동건"/><br>
+	
+	<br><br><br>
+	<h3>절대 경로로 이미지 삽입하기</h3>
+	<img src="http://127.0.0.1:8088/clientweb/images/jang1.jpg" width="200" height="300"><br>
+	<img src="/clientweb/images/jang1.jpg" width="200" height="300"><br><!-- 루트(http://127.0.0.1:8088/) 생략 가능 -->
+	<br><br><br><img src="/clientweb/images/59.gif" width="2500000000" height="3000000000"><br>
+	 
+	 
+	
+	<br><br><br>
+	<div class="spinner-border text-info"></div>
+	
+	<br><br><br><br>
+	<button data-toggle="collapse" data-target="#demo">click me!</button>
+	
+	<div id="demo" class="collapse">
+	hiden text....
+	</div> 
+	<br><br><br>
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script> 
+</body>
+</html>
