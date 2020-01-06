@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- 1. css의 기본 사용방법과 선택자의 종류 및 사용방법 -->
+<html>
+<head>
+	<meta charset="EUC-KR">
+	<title>HTML5란?</title>
+ 	<!-- <link type="text/css" rel="stylesheet" href="../common/css/mystyle.css">href : css 파일 경로 -->
+ 	<link type="text/css" rel="stylesheet" href="clientweb/common/css/mystyle.css"><!-- href : css 파일 경로 -->
+	<style type="text/css">
+		p {		/* 1. html태그를 선택자로 사용할 수 있다*/
+			color: aqua;
+			background: yellow;
+		}
+		body {
+			color: yellow;
+			font-size: 9pt;
+			font-family: 굴림체;			
+		} /*속성이 겹칠땐 태그의 관계에 따라 우선순위가 적용됨  */
+		.myclass {	/* 2. 태그 내부에 class속성을 정의하고 선택자로 사용할 수 있다. => 중복 정의가 가능*/
+			color: white;
+			background: blue;
+		}
+		#mydiv {/* 3. 태그 내부에 id 속성을 정의하고 선택자로 사용할 수 있다. => id속성은 식별하기 위해서 사용하는 것이므로 한 문서에서 동일한 이름의 id는 하나만 정의할 수 있다. */
+			border: solid blue 10px;
+			color : buttonhighlight;
+		}
+	</style>
+</head>
+<body>
+	<div class="myclass">HTML 5는 별도 프로그램을 깔지 않아도 인터넷 브라우저상에서 화려한 그래픽 효과를 구현하며,
+		음악ㆍ동영상을 자유롭게 감상할 수 있는 마크업 언어(markup language)이다.</div>
+	<p>2004년부터 HTML 5 표준화 그룹인 WHATWG(Web Hypertext Application
+		Technology Working Group)는 HTML 5를 HTML의 차기 핵심 표준으로 만들기 위한 세부 작업을
+		시작하였고, 2014년 10월 웹표준화기구 월드와이드컨소시엄(W3C)은 HTML 5을 웹표준으로 선정했다.</p>
+	<div class="myclass">이에 따라 애플ㆍ마이크로소프트(MS), 구글, 페이스북 등 글로벌 IT 기업들은 HTML 5 시대 주도권을
+		잡기 위해 치열한 경쟁에 돌입하기도 했다.</div>
+	<div>HTML 5는 별도 프로그램을 깔지 않아도 인터넷 브라우저상에서 화려한 그래픽 효과를 구현하며,
+		음악ㆍ동영상을 자유롭게 감상할 수 있는 마크업 언어(markup language)이다.</div>
+	<p class="myclass">2004년부터 HTML 5 표준화 그룹인 WHATWG(Web Hypertext Application
+		Technology Working Group)는 HTML 5를 HTML의 차기 핵심 표준으로 만들기 위한 세부 작업을
+		시작하였고, 2014년 10월 웹표준화기구 월드와이드컨소시엄(W3C)은 HTML 5을 웹표준으로 선정했다.</p>
+	<div id="mydiv">이에 따라 애플ㆍ마이크로소프트(MS), 구글, 페이스북 등 글로벌 IT 기업들은 HTML 5 시대 주도권을
+		잡기 위해 치열한 경쟁에 돌입하기도 했다.</div>
+
+</body>
+</html>

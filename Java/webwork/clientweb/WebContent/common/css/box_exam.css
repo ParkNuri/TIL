@@ -1,0 +1,34 @@
+@charset "EUC-KR";
+body{
+	
+	font-size: 10px;
+}
+h1{
+	color: #499a9f;
+	font-size: 15px;
+}
+#bluebox{
+	background-color:#a7cece;
+	background-image: url("../../images/background.gif");
+	background-repeat: no-repeat;
+	
+	border-radius: 25px;
+	
+	margin:20px;
+	
+	font-style:italic;	
+	
+	overflow: auto;
+	
+	height:80px;
+	
+	padding-left:80px;
+	padding-bottom: 30px;
+	padding-top: 20px;
+	padding-right: 20px; 
+}
+#outer{
+	width: 80%;
+	margin:auto;
+	text-align: justify;/* 텍스트 길이 양쪽맞춤 텍스트 페이지맞춤 */
+}
