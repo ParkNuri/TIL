@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+	<script type="text/javascript">
+	function showTime() {
+		today = new Date();
+		str = today.getHours()+"시";
+		str = str+today.getMinutes() + "분";
+		str = str+today.getSeconds() + "초";
+		myform.time.value=str;
+	}
+	function run(){
+		//일종의 예약실행 시스템
+		//window.setTimeout("location.href='https://www.naver.com'",3000);
+		//window.setInterval를 호출문과 변수를 같이 사용하게 되면 실행중인 작업아이디를 변수에 저장하게 되므로 실행중인 작업을 제어하기 편하다.
+		jobid = window.setInterval(showTime, 1000);
+	}
+	function stop(){
+		//clearInterval을 이용해서 setInterval 되고 있는 job을 제거 가능. jobid 가 해당작업의 아이디값!
+		window.clearInterval(jobid);
+	}
+	</script>
+</head>
+<body onload="showTime()">
+	<form action="" name="myform">
+		<input type="text" name="time">
+		<input type="button" value = "시작" onclick="run()"/>
+		<input type="button" value = "중지" onclick="stop()"/>
+	</form>
+	
+</body>
+</html>

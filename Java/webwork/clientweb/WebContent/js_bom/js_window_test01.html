@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+	<script type="text/javascript">
+		//window.confirm, window.alert 연습
+		function testConfirm(){
+			result=window.confirm("진짜 나 없앨거야...?");
+			if(result==true){
+				window.confirm("한번만 더 생각해줘...ㅠ_ㅠ");
+			}
+			else{
+				window.confirm("잘 생각했어~고마워!^0^");
+			}
+			window.alert(result);
+		}
+		//window.open, window.close 연습
+		function searchAddress(){	//popup을 부르는 창을 오프너라고 한다
+			mypopup = window.open("js_popup.html", "mywin", "width=300,height=300,top=100");
+		}
+		function idcheck() {
+			//mypopup2는 팝업창
+			mypopup2 = window.open("js_popup.html", "mywin", "width=300,height=300,top=100");
+			/* alert(window.document.myform.id.value); */
+			//opener 입자에서 popup에 데이터 넘겨주기
+			//mypopup2.document.mypopup.data.value=myform.id.value;
+		}//opener
+	</script>
+</head>
+<body>
+<!-- alert <= window에서 제공하는 기능 -->
+<!-- 	<button onClick="window.alert('경고창')">경고창</button> : html 5 방식 -->
+	<button onClick="window.alert('경고창')">경고창</button>
+	<button onClick="testConfirm()">확인창</button>
+	<button onClick="test_number()">숫자처리메서드</button>
+	<button onClick="window.close()">닫기</button>
+	
+	<form action="" name="myform">
+		아이디 : <input type="text" name="id"	>
+		<input type="button" value="CHECK ID" onClick="idcheck()">
+		<br>
+		
+
+		우편번호 : <input type="text" name="zipcode"	>
+		<input type="button" value="SEARCH ADDRESS" onClick="searchAddress()">
+		<br>
+		
+		상세주소 : <input type="text" name="address"><br>
+		<input type="submit" value="SEND">
+	</form>
+</body>
+</html>

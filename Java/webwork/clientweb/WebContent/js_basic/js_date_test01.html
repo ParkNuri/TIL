@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!-- 날짜시간과 관련된 자바스크립트 내장객체(Date) -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		today = new Date();	//java와 다르게 타입을 선언하지 않는다.
+		document.write(today);
+		str = today.getFullYear()+"년";
+		str = str + (today.getMonth() + 1)+"월";
+		str = str + today.getDate()+"일";
+		str = str + today.getHours()+"시";
+		str = str+today.getMinutes() + "분";
+		str = str+today.getSeconds() + "초";
+		day = today.getDay();	//일~월 요일을 0~6의 숫자로 인덱싱
+		
+		//switch 활용해서 요일 번호를 요일명으로 변경하기
+		weekday="";
+		
+		switch (day) {
+		case 0:
+			weekday="Sun";
+			break;
+		case 1:
+			weekday="Mon";
+			break;
+		case 2:
+			weekday="Tue";
+			break;
+		case 3:
+			weekday="Wed";
+			break;
+		case 4:
+			weekday="Thur";
+			break;
+		case 5:
+			weekday="Fri";
+			break;
+		case 6:
+			weekday="Sat";
+			break;
+
+		default:
+			break;
+		}
+		
+		str = str+ " " + weekday;
+			
+		document.write("<h2>"+str+"</h2>")
+		
+		myimg = "1.jpg";
+		document.write("<img src='../images/jang"+myimg+"'/>");
+		document.bgColor="yellow";
+		
+		
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="EUC-KR">
+	<title>Insert title here</title>
+	<style type="text/css">
+		span {
+			color:red;
+		}
+	</style>
+	<script type="text/javascript">
+		function checkId(){
+			userId=document.timonForm.id.value;
+			if(userId.length<4){
+				document.getElementById("result")innerHTML = "4글자 이상의 글자를 입력하세요";
+			}
+			//document.getElementById("result").innerHTML = result;
+		}
+	</script>
+</head>
+<body>
+	<form action="" name="timonForm">
+	아이디:<input type="text" name="id" onkeyup="checkId()">
+	<span id="result"></span>
+	</form>
+</body>
+</html>

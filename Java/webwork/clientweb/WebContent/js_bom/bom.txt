@@ -1,0 +1,32 @@
+BOM
+> 브라우저에 출력되는 모든 구성요소를 객체로 정의하고 접근
+
+- window
+- location
+- document
+- image
+
+1. 접근 방법
+	- 모든 객체는 계층구조를 갖고 있다.
+		window.document. ...
+	- form 태그와 form 태그 하위 태그를 객체로 접근하기 위해서 name속성을 정의하고 접근
+		<form name="myform">
+			아이디:<input type="text" name = "id">
+			패스워드:<input type="password" name="pass">
+		</form>
+		
+	-형식
+		> window.document.폼객체.텍스트객체
+		ex) window.document.myform.id.속성(메소드)
+		
+		주로 window.document는 생략
+		
+	- id는 주로 javascript나 jQuery에서 식별을 목적으로 사용
+	- id를 정의하는 경우
+		<div id="mydiv">
+		</div>
+		
+		(DOM 방식)
+		객체 = document.getElementById("mydiv")
+		
+		

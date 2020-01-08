@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+	myarr = new Array();
+	myarr[0] = "jquery";
+	myarr[1] = "Servlet";
+	myarr[2] = "jsp";
+	myarr[3] = "spring";
+	myarr[4] = "tiles";
+	myarr[5] = "mybatis";
+	myarr[6] = "aaa";
+	
+	document.write("<h2>"+myarr+"</h2>");
+	document.write("<h2>"+myarr.length+"</h2>");
+	for (var i = 0; i < myarr.length; i++) {
+		document.write("<h2>"+myarr[i]+"</h2>");
+	}	
+	document.write("<h2>"+myarr.join(",")+"</h2>");
+	document.write("<h2>"+myarr.reverse()+"</h2>");
+	
+	</script>
+</body>
+</html>

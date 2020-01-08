@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="EUC-KR">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+	function calcNum(num1, num2){
+		alert(num1, num2);
+		result=num1+num2;
+		return result;
+	}
+	function printGuGu(row){
+		alert("call printGuGu")
+		for(i=1;i<9;i++){
+		document.write(row+"x"+i+"="+(row*i)+"<br.>");
+		}
+	}
+	</script>
+</head>
+<body>
+	<script type="text/javascript">
+	row=parseInt(window.prompt("구구단 숫자를 입력하세요"));
+	num1=parseInt(window.prompt("계산할 숫자를 입력하세요"));
+	num2=parseInt(window.prompt("계산할 숫자를 입력하세요"));
+	alert("입력한숫자의 합은=>"+calcNum(num1, num2));
+	</script>
+	<button onclick="printGuGu(row)">구구단 출력</button>
+	<input type="button" value="구구단 출력하기" onclick="javascript:printGuGu(row)"/>
+	
+</body>
+</html>

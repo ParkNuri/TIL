@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+	<script type="text/javascript">
+		function calculate(){
+			num=parseInt(document.form1.amount.value);
+			result = num*0.9;
+			document.getElementById("result").innerHTML = result;
+		} 
+	</script>
+</head>
+<body>
+	<form action="" name="form1">
+		수량:<input type="text" name="amount" onkeyup="calculate()">
+		<span id="result"></span>
+	</form>
+	
+</body>
+</html>
