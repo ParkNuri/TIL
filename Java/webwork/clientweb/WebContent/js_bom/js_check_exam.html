@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="EUC-KR">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		totalP=0;
+		mycheck = myform.prd;	//head 태그 내에선 prd를 인식하지 못함. script가 body에 있으면 가능
+		function allCheck(){
+			allChkVal = myform.allchk.checked
+			mycheck = myform.prd;
+			
+			for (i = 0; i < mycheck.length; i++) {
+				mycheck[i].checked=allChkVal;
+			}
+			calc();
+		}
+		function calc(){
+			countArr = myform.count;
+			priceArr = myform.price;
+			calcpriceArr= document.getElementsByClassName("calcprice");
+			
+			//체크박스
+			mychk = myform.prd;
+			
+			result=0;
+			totalprice=0
+			
+			for (i = 0; i < mychk.length; i++) {
+				if(mychk[i].checked){
+					result = countArr[i].value*priceArr[i].value;
+					calcpriceArr[i].innerHTML=result;
+					totalPrice = totalPrice +result;
+				}
+				else{
+					calcpriceArr[i].innerHTML+result;
+				}
+			}
+		}
+		/* function calcPrice(i){
+			alert("in price");
+			price = myform.price;
+			count = myform.count;
+			cp = myform.getElementsByClassName("calcprice");
+			sumPrice=myform.price[i].value*myform.count[i].value;
+			alert(sumPrice);
+			alert(cp.length);
+			
+			cp[0].innerHTML=sumPrice;
+		} */
+	</script>
+	
+</head>
+<body>
+	<form name="myform">
+		<table border="1" width="800">
+			<tr>
+				<td><input type="checkbox" name="allchk" onclick="allCheck()"/>항목명</td>
+				<td>상품정보</td>
+				<td>수량</td>
+				<td>판매가</td>
+				<td>구매예정가</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="prd" onclick="calc()"/>완도미역</td>
+				<td><img src="../images/pro1.jpg"/></td>
+				<td><input type="number" name="count" value="1" onchange="calc()"/></td>
+				<td>
+				<input type="text" name="price" value="6900"/><span>원</span></td>
+				<td><span class="calcprice"></span><span>원</span></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="prd"  onclick="calc()"/>스카트 빨아쓰는 휴지</td>
+				<td><img src="../images/pro2.jpg"/></td>
+				<td><input type="number" name="count" value="1" onchange="calc()"/></td>
+				<td><input type="text" name="price" value="7800"/><span>원</span></td>
+				<td><span class="calcprice"></span><span>원</span></td>
+			</tr>
+			<tr>
+				<td colspan="6" align="right"><span id="totalprice"></span><span>원</span></td>
+			</tr>
+		</table>
+	</form>
+
+</body>
+</html>

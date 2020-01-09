@@ -26,6 +26,21 @@
 			//opener 입자에서 popup에 데이터 넘겨주기
 			//mypopup2.document.mypopup.data.value=myform.id.value;
 		}//opener
+		function test_number() {
+			// 같은 페이지 내의 요소에는 document 생략 가능
+			num1 = parseInt(myform.num1.value);	//	value 속성이 =오른쪽:getter
+			num2 = parseInt(myform.num2.value);
+			myform.result.value = num1+num2;	//	value 속성이 = 왼쪽:setter
+		}
+		function test_number2() {
+			//alert("isNaN의 결과->"+window.isNaN(myform.num1.value));	//NaN = Not a Number => 숫자 아닌것 true
+			//alert("eval의 결과->"+eval(myform.num1.value));
+			data = myform.num1.value;
+			alert("문자열의 길이=>"+data.length);
+			data2=data.trim();
+			alert("문자열의 길이=>"+data2.length);
+			
+		}
 	</script>
 </head>
 <body>
@@ -34,6 +49,7 @@
 	<button onClick="window.alert('경고창')">경고창</button>
 	<button onClick="testConfirm()">확인창</button>
 	<button onClick="test_number()">숫자처리메서드</button>
+	<button onClick="test_number2()">숫자처리메서드2</button>
 	<button onClick="window.close()">닫기</button>
 	
 	<form action="" name="myform">
@@ -47,7 +63,12 @@
 		<br>
 		
 		상세주소 : <input type="text" name="address"><br>
-		<input type="submit" value="SEND">
+		<input type="submit" value="SEND"><br>
+		
+		num1 : <input type="text" name="num1">
+		num2 : <input type="text" name="num2">
+		result : <input type="text" name="result"><br>
+		<input type="button" value="RESULT" onClick="test_number()">
 	</form>
 </body>
 </html>

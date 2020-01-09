@@ -4,15 +4,30 @@
 <meta charset="EUC-KR">
 <title> New Document </title>
 <script type="text/javascript">
+	line="";
+	flag=0;
+	function button_click(val){
+		line = line +val;
+	}
+	function printText() {
+		myform.mytext.value=line;
+	}
+	function compute(){
+		line=eval(line);
+	}
+	function clear_del() {
+		line="";
+	}
 </script>
 </HEAD>
 <BODY>
 <br>
 <br>
 <br>
-<center>
 <h1>계산기 활용 예</h1>
-<form name="myform">
+<form name="myform" onclick="printText()">
+<span id=test1></span>
+<span id=test2></span>
 <table border="1">
 	<tr>
 		<td colspan="4"><input type="text" size="28" name="mytext"></td>
@@ -47,6 +62,5 @@
 	</tr>
 </table>
 </form>
-</center>
 </BODY>
 </HTML>
