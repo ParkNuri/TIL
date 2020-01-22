@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- bean(객체)을 생성할 수 있도록 정보를 정의  -->
+	<!-- app3.MyBeanStyleA mybean = new app3.MyBeanStyleA() -->
+	<!-- my bean : myBean -->
+	<bean id="myBean1" class="app3.MyBeanStyleA" scope="prototype"/>
+	<bean id="myBean2" class="app3.MyBeanStyleB" init-method="myInit" destroy-method="myDestroy"/>
+	 
+</beans>

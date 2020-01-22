@@ -3,6 +3,74 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<script type="text/javascript">
+	
+		function insertP() {
+			pNode = document.createElement("p");
+			tNode = document.createTextNode("newP");
+			
+			pNode.appendChild(tNode);
+
+			pNode.setAttribute("style", "background: yellow;");
+			
+			parentNode = document.getElementById("root");
+			
+			parentNode.appendChild(pNode);
+			
+		}
+		function deleteP() {
+			parentNode = document.getElementById("root");
+			
+			if(parentNode.childNodes.length!=0){				
+				if(parentNode.lastChild.nodeName=="#text"){
+					parentNode.removeChild(parentNode.lastChild);
+				}
+				parentNode.removeChild(parentNode.lastChild);
+			}
+			
+			parentNode.removeChild(parentNode.lastElementChild); // 태그 중 마지막것. 공백은 포함하지 않음 
+																 //	-> 공백= node(o), element(x) 
+																 //	-> tag= node(o), element(o) 
+		}
+		function deleteDivAndP() {
+					//console tip
+					/* 
+					typeof "test"
+					"string"
+					typeof 100
+					"number"
+					typeof 2011/11/11
+					NaN
+					1==1
+					true
+					1===1
+					true
+					typeof Math
+					"object"
+					"1"==1		// 숫자가 같은지만 비교
+					true
+					"1"===1		// type까지 비교
+					false
+ 					*/				
+			parentNode = document.getElementById("root");
+			nodeLength=parentNode.childNodes.length
+		/* 	//case1
+			if(nodeLength!=0){
+				
+				for (var i = 0; i < nodeLength; i++) {
+					//console.log(nodeLength); sout 같은 기능 개발자도구 창의 console에서 확인가능
+					parentNode.removeChild(parentNode.firstChild);
+				}
+			} */
+			//case2
+			while(parentNode.hasChildNodes()){
+				console.log("삭제완료");
+				parentNode.removeChild(parentNode.lastChild);
+			}
+		}
+		
+
+</script>
 </head>
 <body>
 	<div id="layer"></div>
@@ -17,11 +85,12 @@
 	</div>
 
 	<hr>
-	<button onclick="insertP()">P태그추가하기</button>
-	<button onclick="deleteP()">P태그삭제하기</button>
-	<button onclick="deleteDivAndP()">div안의 모든 p태그 삭제하기</button>
+	<button id="insertbtn" onclick="insertP()">P태그추가하기</button>	<!-- add newP yellow -->
+	<button onclick="deleteP()">P태그삭제하기</button>	<!-- delete p tag -->
+	<button onclick="deleteDivAndP()">div안의 모든 p태그 삭제하기</button>	<!-- delete all tags at once -->
 	<button onclick="innerHTML_test()">innerHTML</button>
 
-
+	
 </body>
 </html>
+

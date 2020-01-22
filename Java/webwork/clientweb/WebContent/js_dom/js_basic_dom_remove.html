@@ -4,6 +4,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR" />
 <title>Insert title here</title>
+<script type="text/javascript">
+window.onload = function () {
+	document.getElementById("btndelete").onclick = function () {
+		//1. 삭제하고 싶은 노드의 부모노드
+		targetNode = document.getElementById("myformId");
+		
+		//2. 삭제할 노드를 구하기
+		//delNode = document.getElementById("btndelete")
+		delNode = targetNode.firstChild;
+		
+		//3. 삭제하기
+		targetNode.removeChild(delNode);
+	}
+	function insert() {
+		alert("insert work~");
+	}
+}
+</script>
 </head>
 <body>
 	<div id="main">
@@ -16,7 +34,7 @@
 				<input type="button" value="dom구조확인하기"
 					 name="btn" id="btndomtest" />
 				<input type="button" value="노드삽입하기"
-					 name="btn" id="btninsert" />
+					 name="btn" id="btninsert" onclick="insert()" />
 				<input type="button" value="이미지노드삽입하기"
 					 name="btn" id="imginsert" />
 					 

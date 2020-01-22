@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+	<div id="main">
+		<div class="test1">jquery~~~</div>
+		<div class="test2">jquery~~~~</div>
+		<div id="test3">jquery~~~~</div>
+		<div id="test4">jquery~~~~</div>
+		<div id="test5">jquery~~~~</div>
+		<a id="attrtest">하이퍼링크</a>
+		<a id="attrtest2">하이퍼링크</a>
+	</div>
+	<div id="result"></div>
+	<form>
+		<input type="button" id="htmlbtn" value="html태그 추가하기"/>
+		<input type="button" id="attrbtn" value="속성추가하기"/>
+ 	</form>
+	<script type="text/javascript">
+		//동적으로 DOM객체를 만들 때 속성을 추가하기 
+		$(document).ready(function(){
+			$("#htmlbtn").on("click", function () {
+				$("#result").html("<h2>추가하는 문자열</h2>");
+			});
+			$("#attrbtn").on("click", function () {
+				//속성 한 개 제어
+				$("#attrtest").attr("href","https://www.naver.com");
+				//속성 여러 개 제어
+				$("#attrtest2").attr({
+									"href":"https://www.naver.com",
+									"target":"_blank"			// 새탭에서 열기	
+									});//json 데이터 표현 방식으로 추가
+				
+			});
+		});
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

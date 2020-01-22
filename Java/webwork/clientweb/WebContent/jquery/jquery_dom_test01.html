@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR" />
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+</script>
+<script type="text/javascript">
+	data = $("<p>dom액세스하는 방법</p>");	//식별성 있게 객체 선언시
+//	data = "<p>dom액세스하는 방법</p>";	//식별할 수 있는 하나의 태그가 아니라 문자열로 추가됨
+	$(document).ready(function () {
+		$("#append").on("click", function () {
+			/* 선택된 노드 하위노드에 */
+			$("#btns").append(data);
+		});
+		$("#prepend").on("click", function () {
+			/* 선택된 노드 상위노드에 */
+			$("#btns").prepend(data);
+		});
+		$("#after").on("click", function () {
+			/* 선택된 노드의 이후 형제노드에 */
+			$("#btns").after(data);
+		});
+		$("#before").on("click", function () {
+			/* 선택된 노드의 이전 형제노드에 */
+			$("#btns").before(data);
+		});
+		$("#remove").on("click", function () {
+			/* 선택된 노드와 그 하위 노드를 모두 삭제 */
+			$("#btns").remove();	//특정객체를 지우려면 선택자를 remove 안에 정의
+		});
+		$("#empty").on("click", function () {
+			/* 선택된 노드의 하위 노드만 삭제 */
+			$("#btns").empty(data);
+		});
+		
+	
+		
+	})
+	
+</script>
+</head>
+<body>
+	<div id="main">
+		<h1 id="myhead">안녕하세요 DOM에 관한 작업을 수행 중입니다.</h1>
+	
+		<div id="domtestbtn">
+			<form id="myformId" name="myform">	
+				<div id="btns" style="border: solid 1px blue">	
+					<input type="button" value="append"
+						 name="btn" id="append" />
+					<input type="button" value="prepend"
+						 name="btn" id="prepend" />
+						 
+					<input type="button" value="after"
+						 name="btn" id="after" />
+					<input type="button" value="before"
+						 name="btn" id="before" />
+				
+					<input type="button" value="remove"
+						 name="btn" id="remove" />
+					<input type="button" value=empty
+						 name="btn" id="empty" />
+				</div>
+			</form>
+			
+		</div>
+	</div>
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

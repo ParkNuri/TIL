@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="samsung" class="dl.exam01.SamsungTV"/>
+	<bean id="lg" class="dl.exam01.LgTV"/>
+	<bean id="tv" class="dl.exam01.SamsungTV"/>
+<!-- 	<bean id="tv" class="dl.exam01.LgTV"/> -->
+
+	<bean id="mydao" class="di.constructor.basic.MemberDAO"/>
+	<!-- 사용하는 생성자의 매개변수에 따라 -->
+<!-- 		<constructor-arg></constructor-arg> 하나당 생성자의 매개변수 하나 -->
+	<bean id="insa" class="di.constructor.basic.InsaImpl">
+		<constructor-arg ref="mydao"/><!-- VALUE면 value ref는 이미 만들어져있는 객체를 사용할때 -->
+	</bean>
+
+	<bean id="mydice" class="di.constructor01.Dice"/>
+	<bean id="myplayer" class="di.constructor01.Player">
+		<constructor-arg ref="mydice" />
+	</bean>
+</beans>

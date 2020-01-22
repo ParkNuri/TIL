@@ -28,33 +28,41 @@
 				checkVal=checkVal+mycheck[i].value
 			}
 		}
-		//여기에 dom을 적용해보세요	
+		//여기에 dom을 적용해보세요
+		
+		
+		parentNode = document.getElementById("result");
+		
+		childNode = parentNode.childNodes;
+		if(childNode.length!=0){
+			for (var i = 0; i < childNode.length; i++) {
+			parentNode.removeChild(parentNode.firstChild);
+			}
+		}
+		h1Node = document.createElement("h1");
+		textNode = document.createTextNode(checkVal);
+		h1Node.appendChild(textNode);
+		
+		
+		parentNode.appendChild(h1Node);
 	}	
 
 </script>
 </head>
 <body>
-	<center>
-		<form name="cbfmt">
-			<label>아이스크림</label> 
-			<input type="checkbox" name="food"
-			 value="아이스크림" id="ice" > 
-				<label>커피</label> <input type="checkbox"	
-				name="food" value="커피" id="coffee">
-				 <label>음료수</label> <input type="checkbox" 
-				 name="food" value="음료수" id="beverage"> 
-		
-				<label>모두체크/해제</label>
-			<input type="checkbox" name="allchk" 
-			id="allchk" onclick="allcheck()">
-			
-			<label>배경색변경하기</label>
-			<input type="checkbox" name="bgchk" 
-			id="bgchk" onclick="checktest()"><br>
-			
-			<input type="button" value="전송" onclick="ckFunc()">
-		</form>
-		<div id="result"></div>
-	</center>
+
+	<form name="cbfmt">
+		<label>아이스크림</label> <input type="checkbox" name="food" value="아이스크림"
+			id="ice"> <label>커피</label> <input type="checkbox"
+			name="food" value="커피" id="coffee"> <label>음료수</label> <input
+			type="checkbox" name="food" value="음료수" id="beverage"> <label>모두체크/해제</label>
+		<input type="checkbox" name="allchk" id="allchk" onclick="allcheck()">
+
+		<label>배경색변경하기</label> <input type="checkbox" name="bgchk" id="bgchk"
+			onclick="checktest()"><br> <input type="button"
+			value="전송" onclick="ckFunc()">
+	</form>
+	<div id="result"></div>
+
 </body>
 </html>

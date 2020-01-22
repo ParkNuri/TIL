@@ -12,14 +12,44 @@
 		//callback함수 : 
 		//callback으로 사용하는 경우 함수명 뒤 괄호 x
 		document.getElementById("btndomtest").onclick = domTest;
-		document.getElementById("btninsert").onclick = function () {
-			alert("insert");
+		/* document.getElementById("nodetest").onclick = function () {
+		alert("insert");
+		
 			
-		}
+		} */// 공유 변수에 잘못된 값이 들어가는 것을 방지하기위해
+		// 이벤트 핸들러를 미리 선언
+		document.getElementById("nodetest").onclick = domTest2;
 	
 	}
 	function domTest() {
-		alert("domTest.....");
+		//alert("domTest.....");
+		nodelist = document.getElementsByTagName("div");	//div 태그 목록을 가져온다. - NodeList 반환(배열)
+		
+		alert(nodelist);
+		alert("div node의 갯수:"+nodelist.length);		//모든 div 갯수
+		
+		//getArrtribute : 노드(엘리먼트, 태그 등)에 정의된 속성 값을 리턴 
+		//				  ---
+		for (var i = 0; i < nodelist.length; i++) {
+			alert("node id 속성:"+nodelist[i].getAttribute("id"));
+			if(nodelist[i].getAttribute("id")=="domtestbtn"){
+				alert("양식태그");
+				alert(nodelist[i].firstChild.nodeName+","+nodelist[i].firstChild.nodeValue);
+			}
+		}
+			
+	}
+	function domTest2() {
+		mfNode = document.getElementById("myformId").childNodes;	
+		alert(mfNode.length);	// 13개 = input 5개 + 공백 7개  + span 1개
+		for (var i = 0; i < mfNode.length; i++) {
+			if(mfNode[i].nodeName!="#text"){
+				if(mfNode[i].getAttribute("id")=="imginsert"){
+					//document.getElementById("spc").innerHTML=mfNode[i].getAttribute("name");
+					document.getElementById("spc").innerHTML=mfNode[i].nodeName;
+				}
+			}
+		}
 	}
 </script>
 </head>
@@ -30,18 +60,18 @@
 		<div id="mycontent1"><img src="../images/m_garden07.jpg" name="myimg" id="myimagId"
 				alt="이미지파일" /><h3>이미지파일</h3></div>
 		<div id="mycontent2">DOM의 구조를 볼까~~</div>
-		<div id="domtestbtn">
-			<form id="myformId" name="myform">		
+		<div id="domtestbtn"><form id="myformId" name="myform">		
 				<input type="button" value="dom구조확인하기"
 					 name="btn" id="btndomtest" />
-				<input type="button" value="노드삽입하기"
-					 name="btn" id="btninsert" />
+				<input type="button" value="노드탐색연습"
+					 name="btn" id="nodetest" />
 				<input type="button" value="이미지노드삽입하기"
 					 name="btn" id="imginsert" />					 
 				<input type="button" value="특정노드전에 삽입하기"
 					 name="btn" id="btninsertbefore" />
 				<input type="button" value="특정노드삭제하기"
 					 name="btn" id="btndelete" />
+				<span id="spc"></span>
 			</form>
 			
 		</div>
