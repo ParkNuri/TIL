@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/resources/**" location="/resources/" />
+
+	<!-- 정적리소스를 연결하는 부분 -->
+	<!-- 이미지파일이나 common 폴더를 절대경로로 등록 -->
+	<resources location="/WEB-INF/static/images/" mapping="/images/**"></resources>
+	<resources location="/WEB-INF/static/common/" mapping="/common/**"></resources>
+	
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- 내 뷰를 어디서 찾느냐 -->
+		<beans:property name="prefix" value="/WEB-INF/" /><!-- 1순위 -->
+		<beans:property name="suffix" value=".jsp" /><!-- 없으면 2순위 -->
+		<beans:property name="order" value="2"></beans:property> <!-- 아니면 3순위 -->
+	</beans:bean>
+	
+	
+	<!-- ============================= tiles ============================= -->
+	<!-- tiles설정 파일을 읽어서 등록한 대로 뷰를 만들어 낼 수 있도록 등록 -->
+	<!-- 1. tiles설정 파일을 읽어올 수 있도록 설정 파일을 등록 -->
+	<beans:bean id="tilesConfigurer" 
+		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<beans:property name="definitions">
+			<beans:list>
+				<!-- * : all files, ** : all folders -->
+				<beans:value>/WEB-INF/**/*-tiles.xml</beans:value>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+	
+	<!-- 2. tiles프레임워크 기반으로 뷰를 만들 수 있도록 ViewResolver등록 -->
+	
+	<beans:bean id="tilesViewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<beans:property name="viewClass" 
+		 value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+		<beans:property name="order" value="1"/> 
+	</beans:bean>
+	
+	
+	<!-- ============================= tiles-end ============================= -->
+	<!-- ============================= mybatis ============================= -->
+	<!-- 1. Connection 관리를 담당하는 객체 -->
+	<!-- 	jndi : java naming directory	-->
+	<beans:bean id="ds" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<!-- Factory 객체 명 -->
+		<beans:property name="jndiName" value="jdbc/myspring"></beans:property>
+		<beans:property name="resourceRef" value="true"></beans:property>
+	</beans:bean>
+	
+	<!-- 2. spring 에서 mybatis의 핵심클래스인 SqlSession을 사용할 수 있도록 하기 위해서 생성-->
+	<beans:bean id = "sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<beans:property name="dataSource" ref="ds" />
+		<beans:property name="configLocation" value="/WEB-INF/config/mybatis-config.xml" />
+	</beans:bean>
+	
+	<!-- 3. mybatis의 핵심클래스를 등록 -->
+	<beans:bean class="org.mybatis.spring.SqlSessionTemplate">
+		<beans:constructor-arg ref="sqlSessionFactory" />
+	</beans:bean>
+	
+	
+	
+	<!-- ============================= mybatis-end ============================= -->
+	<context:component-scan base-package="com.nuri.erp" />
+	<context:component-scan base-package="main" />
+	<context:component-scan base-package="multi" />
+	
+	
+	
+</beans:beans>

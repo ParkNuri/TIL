@@ -5,6 +5,7 @@ public class InsaImpl implements Insa {
 	public InsaImpl(MemberDAO dao) {
 		super();
 		this.dao = dao;
+		System.out.println("InsaImpl 매개변수 1개 생성자");
 	}
 	@Override
 	public void addUser(MemberDTO user) {

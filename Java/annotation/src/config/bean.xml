@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+	<!-- bean을 설정파일에 직접 등록하지 않는다.
+		 annotation을 이용해서 등록 - 어떤 패키지에서 bean을 찾아야 하는지 명시
+	 -->
+	<context:component-scan base-package="exam.anno01" />
+	<context:component-scan base-package="exam.anno02" />
+	<context:component-scan base-package="book.exam.constructor" />
+	
+</beans>

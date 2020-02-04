@@ -1,0 +1,10 @@
+EmpServiceImpl
+EmpDAOImpl
+emp.xml(namespace=multi.erp.emp)
+
+request view -> Controller -> Service -> dao -> mapper.xml
+ (login.jsp)		|
+ 					|
+ 					|
+ 			  response view(board/list)
+ 			  로그인 후 : top.jsp의 이미지가 로그인 사용자의 이미지로 변경

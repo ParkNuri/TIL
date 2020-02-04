@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- sql 정의 -->
+<mapper namespace="multi.erp.board">
+	<!-- resultType : rowMapper와 같은 역할. record 하나를 명시하는...
+					  mybatis-config.xml에서 등록한 vo의 alias명 입력 -->
+	<select id="listall" resultType="board">
+		select * from board
+	</select>
+	<select id="categorySearch" resultType="board" parameterType="String">
+		select * from board where category=#{category}
+	</select>
+	<!-- parameterType : insert될 DTO의 type을 명시 -->
+	<!-- mybatis에서의 ? 는 #{} -->
+	<insert id="insert" parameterType="board">
+		insert into board values(board_seq.nextval, 'gang', #{title}, #{content}, sysdate, #{category}, 0)
+	</insert>
+	<!-- 동적 sql -->
+	<select id="dynamicSearch" resultType="board" parameterType="Map">
+		select * from board
+		<where>
+			<!-- BoardDAOImpl에서 put 할때 준 이름 -->
+			<if test="tag=='title' and search!=''">
+				title like '%' || #{search} || '%'
+			</if>
+			<if test="tag=='id' and search!=''">
+				id like '%' || #{search} || '%'
+			</if>
+			<if test="tag=='content' and search!=''">
+				content like '%' || #{search} || '%'
+			</if>
+			<if test="tag=='write_date' and search!=''">
+				<!-- CDATA Section : xml의 태그 여는 기호(<)를 xml이 아니게 인식하기 위해  -->
+				<![CDATA[
+				to_date(write_date) <= #{search} 
+				]]>
+			</if>
+		</where>
+	</select>
+</mapper>  

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+ <configuration>
+ 	<typeAliases>
+ 		<!-- VO 등록 -->
+ 		<typeAlias type="multi.erp.board.BoardVO" alias="board"/>
+ 		<typeAlias type="multi.erp.emp.MemberVO" alias="member"/>
+ 	</typeAliases>
+ 	<!-- 등록된 mapper 정보 -->
+ 	<mappers>
+ 		<!-- resource는 src부터 인식 -->
+ 		<mapper resource="mapper/board.xml" />
+ 		<mapper resource="mapper/emp.xml"/>
+ 	</mappers>
+ </configuration>

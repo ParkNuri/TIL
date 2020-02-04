@@ -9,6 +9,7 @@ public class Player implements AbstractPlayer{
 	public Player(AbstractDice d) {
 		super();
 		this.d = d;
+		System.out.println("Player의 매개변수 1개 생성자");
 	}
 	//Dice d = new Dice();
 	public void play(){

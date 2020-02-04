@@ -2,9 +2,16 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	<bean id="samsung" class="dl.exam01.SamsungTV"/>
-	<bean id="lg" class="dl.exam01.LgTV"/>
-	<bean id="tv" class="dl.exam01.SamsungTV"/>
+<!-- 	<bean id="samsung" class="dl.book.exam01.SamsungTV">
+		<constructor-arg ref="sony" />
+	</bean>
+	<bean id="lg" class="dl.book.exam01.LgTV"> 
+		<constructor-arg ref="sony" />
+	</bean> -->
+	<bean id="speaker" class="dl.book.exam.constructor.SonySpeaker" />	<!-- xml파일의 해당 abstract class의 class 수정 -->
+	<bean id="tv" class="dl.book.exam.constructor.SamsungTV">
+		<constructor-arg ref="speaker" />
+	</bean>
 <!-- 	<bean id="tv" class="dl.exam01.LgTV"/> -->
 
 	<bean id="mydao" class="di.constructor.basic.MemberDAO"/>
@@ -18,4 +25,23 @@
 	<bean id="myplayer" class="di.constructor01.Player">
 		<constructor-arg ref="mydice" />
 	</bean>
+	
+	<bean id="logic" class="di.constructor02.LogicImpl" />
+	<bean id="service" class="di.constructor02.ServiceImpl">
+		<!-- 매개변수 순서대로! -->
+		<constructor-arg ref="logic" />
+		<constructor-arg value="이민호" />
+		<constructor-arg value="안녕" />
+	</bean>
+	
+	
+	<bean id="articleM" class="di.constructor03.MysqlArticleDAO"/>
+	<bean id="articleO" class="di.constructor03.OracleArticleDAO"/>
+	
+	<bean id="write" class="di.constructor03.WriteArticleMgr">
+		<constructor-arg ref="articleM"/>	<!-- mysql로  -->
+<!-- 		<constructor-arg ref="articleO"/>	oracle로  -->
+	</bean>
+	
+	
 </beans>

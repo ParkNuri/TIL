@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="test" class="test.TestController"/>
+	<bean id="index" class="test.IndexController"/>
+	<bean id="search" class="member.SearchController"/>
+	
+	<!-- 스프링이 제공하는 ViewResolver를 등록 -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/"/>	
+		<property name="suffix" value=".jsp"/>	
+	</bean>
+</beans>
